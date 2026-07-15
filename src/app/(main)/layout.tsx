@@ -34,7 +34,7 @@ import { cn } from '@/lib/utils';
 
 const navItems = [
   { href: '/dashboard', icon: LayoutDashboard, label: 'Dashboard Utama' },
-  { href: '/berita_desa', icon: BookOpen, label: 'Pelayanan Desa' },
+  { href: '/pelayanan-desa', icon: BookOpen, label: 'Pelayanan Desa' },
   { href: '/statistik', icon: BarChart3, label: 'Statistik Desa' },
   { href: '/profil-desa', icon: Info, label: 'Profil Desa' },
   { href: '/BeritaDesa', icon: Newspaper, label: 'Berita Desa' },

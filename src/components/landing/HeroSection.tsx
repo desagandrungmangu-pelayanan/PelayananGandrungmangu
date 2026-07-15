@@ -14,7 +14,7 @@ const floatingItems = [
   { icon: Users, label: 'Statistik Desa', href: '/statistik' },
   { icon: Newspaper, label: 'Berita Desa', href: '/BeritaDesa' },
   { icon: Building2, label: 'Pengumuman', href: '/pengumuman' },
-  { icon: Sparkles, label: 'Layanan Online', href: '/berita_desa' },
+  { icon: Sparkles, label: 'Layanan Online', href: '/pelayanan-desa' },
 ];
 
 const containerVariants = {

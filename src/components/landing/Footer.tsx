@@ -56,7 +56,7 @@ export function Footer() {
             <h3 className="text-sm font-semibold uppercase tracking-[0.25em] text-white">Tentang</h3>
             <ul className="mt-5 space-y-3 text-sm text-slate-400">
               <li><Link href="/profil-desa" className="transition-colors hover:text-white">Profil Desa</Link></li>
-              <li><Link href="/berita_desa" className="transition-colors hover:text-white">Pelayanan Desa</Link></li>
+              <li><Link href="/pelayanan-desa" className="transition-colors hover:text-white">Pelayanan Desa</Link></li>
               <li><Link href="/statistik" className="transition-colors hover:text-white">Statistik</Link></li>
               <li><Link href="/desa-anti-korupsi" className="transition-colors hover:text-white">Desa Anti Korupsi</Link></li>
             </ul>

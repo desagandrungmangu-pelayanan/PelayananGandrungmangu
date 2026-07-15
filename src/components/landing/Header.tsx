@@ -22,7 +22,7 @@ import {
 import { cn } from '@/lib/utils';
 
 const primaryLinks = [
-  { href: '/berita_desa', label: 'Pelayanan Desa' },
+  { href: '/pelayanan-desa', label: 'Pelayanan Desa' },
   { href: '/profil-desa', label: 'Profil Desa' },
   { href: '/statistik', label: 'Statistik' },
   { href: '/BeritaDesa', label: 'Berita Desa' },
