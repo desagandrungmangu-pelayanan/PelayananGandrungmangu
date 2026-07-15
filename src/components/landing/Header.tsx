@@ -95,7 +95,7 @@ export function Header() {
           : 'border-transparent bg-transparent backdrop-blur-none'
       )}
     >
-      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto flex h-16 sm:h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="/" className={cn('transition-colors', isScrolled ? 'text-slate-900' : 'text-white')} aria-label="Beranda Portal Portal Desa Gandrungmangu">
           <Logo />
         </Link>
@@ -184,42 +184,42 @@ export function Header() {
         <div className="lg:hidden">
           <Sheet>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className={cn('rounded-full', isScrolled ? 'text-slate-700' : 'text-white')} aria-label="Buka menu navigasi">
+              <Button variant="ghost" size="icon" className={cn('rounded-full h-9 w-9', isScrolled ? 'text-slate-700' : 'text-white')} aria-label="Buka menu navigasi">
                 <Menu className="h-5 w-5" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[320px] border-l border-white/10 bg-slate-950/95 text-white">
+            <SheetContent side="right" className="w-[300px] sm:w-[320px] border-l border-white/10 bg-slate-950/95 text-white p-5">
               <SheetHeader className="sr-only">
                 <SheetTitle>Menu navigasi</SheetTitle>
                 <SheetDescription>Menu cepat layanan desa</SheetDescription>
               </SheetHeader>
-              <div className="mt-6 flex flex-col gap-6 h-[calc(100vh-80px)] overflow-y-auto pb-12 pr-2 no-scrollbar">
+              <div className="mt-4 flex flex-col gap-5 h-[calc(100vh-60px)] overflow-y-auto pb-10 pr-1 no-scrollbar">
                 <Link href="/" className="inline-flex shrink-0">
                   <Logo />
                 </Link>
-                <div className="space-y-3">
+                <div className="space-y-2">
                   {primaryLinks.map((link) => (
-                    <Link key={link.href} href={link.href} className="block rounded-2xl border border-white/10 px-4 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-white/80 transition-colors hover:bg-white/10 hover:text-white">
+                    <Link key={link.href} href={link.href} className="block rounded-xl border border-white/10 px-3.5 py-2.5 text-xs font-semibold uppercase tracking-[0.15em] text-white/80 transition-colors hover:bg-white/10 hover:text-white">
                       {link.label}
                     </Link>
                   ))}
 
                   {/* Collapsible Potensi Desa on Mobile */}
-                  <div className="rounded-2xl border border-white/10 overflow-hidden">
+                  <div className="rounded-xl border border-white/10 overflow-hidden">
                     <button
                       onClick={() => setMobilePotensiOpen(!mobilePotensiOpen)}
-                      className="w-full flex items-center justify-between px-4 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-white/80 transition-colors hover:bg-white/10 hover:text-white"
+                      className="w-full flex items-center justify-between px-3.5 py-2.5 text-xs font-semibold uppercase tracking-[0.15em] text-white/80 transition-colors hover:bg-white/10 hover:text-white"
                     >
                       <span>Potensi Desa</span>
                       <ChevronDown className={cn("h-4 w-4 transition-transform duration-200", mobilePotensiOpen && "rotate-180")} />
                     </button>
                     {mobilePotensiOpen && (
-                      <div className="bg-white/5 border-t border-white/5 p-2 space-y-1">
+                      <div className="bg-white/5 border-t border-white/5 p-1.5 space-y-1">
                         {potensiSubLinks.map((link) => (
                           <Link
                             key={link.href}
                             href={link.href}
-                            className="block rounded-xl px-4 py-2 text-xs font-semibold uppercase tracking-[0.15em] text-white/60 hover:bg-white/10 hover:text-white transition-colors"
+                            className="block rounded-lg px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.12em] text-white/60 hover:bg-white/10 hover:text-white transition-colors"
                           >
                             {link.label}
                           </Link>
@@ -229,17 +229,25 @@ export function Header() {
                   </div>
 
                   {moreLinks.map((link) => (
-                    <Link key={link.href} href={link.href} className="block rounded-2xl border border-white/10 px-4 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-white/80 transition-colors hover:bg-white/10 hover:text-white">
+                    <Link key={link.href} href={link.href} className="block rounded-xl border border-white/10 px-3.5 py-2.5 text-xs font-semibold uppercase tracking-[0.15em] text-white/80 transition-colors hover:bg-white/10 hover:text-white">
                       {link.label}
                     </Link>
                   ))}
                 </div>
-                <Link href="/layanan-surat" className="shrink-0">
-                  <Button className="mt-2 h-12 w-full rounded-full bg-blue-900 text-white">
-                    Ajukan Layanan
-                    <ArrowRight className="h-4 w-4" />
-                  </Button>
-                </Link>
+
+                <div className="mt-auto space-y-2 pt-2 shrink-0">
+                  <Link href="/layanan-surat" className="block w-full">
+                    <Button className="h-11 w-full rounded-full bg-blue-900 text-xs font-semibold uppercase tracking-wider text-white shadow-lg shadow-blue-900/30 gap-2">
+                      Ajukan Layanan
+                      <ArrowRight className="h-4 w-4" />
+                    </Button>
+                  </Link>
+                  <Link href="/login" className="block w-full">
+                    <Button variant="outline" className="h-10 w-full rounded-full border-white/20 bg-white/5 text-xs font-semibold text-white hover:bg-white/10">
+                      Login Admin
+                    </Button>
+                  </Link>
+                </div>
               </div>
             </SheetContent>
           </Sheet>

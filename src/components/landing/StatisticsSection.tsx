@@ -52,32 +52,32 @@ export function StatisticsSection() {
   const hasError = Boolean(statsError || submissionsError);
 
   return (
-    <section className="py-24 sm:py-28">
+    <section className="py-12 sm:py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.45 }}
-          className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between"
+          className="flex flex-col gap-3 sm:gap-4 lg:flex-row lg:items-end lg:justify-between"
         >
           <div className="max-w-2xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-blue-700">Statistik Desa</p>
-            <h2 className="mt-3 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
+            <p className="text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] sm:tracking-[0.3em] text-blue-700">Statistik Desa</p>
+            <h2 className="mt-2 sm:mt-3 text-2xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
               Data terbaru mengenai kondisi Desa Gandrungmangu.
             </h2>
-            <p className="mt-4 text-lg leading-8 text-slate-600">
+            <p className="mt-2 sm:mt-4 text-base sm:text-lg leading-relaxed sm:leading-8 text-slate-600">
               Informasi terbuka yang membantu masyarakat memahami kondisi wilayah dan perkembangan pelayanan desa.
             </p>
           </div>
-          <a href="/statistik" className="inline-flex items-center gap-2 text-sm font-semibold text-blue-700">
+          <a href="/statistik" className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-blue-700">
             Lihat dashboard lengkap
             <ArrowUpRight className="h-4 w-4" />
           </a>
         </motion.div>
 
 
-        <div className="mt-12">
+        <div className="mt-8 sm:mt-12">
           <StatisticsCharts statsDoc={statsDoc} isLoading={statsLoading} />
         </div>
       </div>
