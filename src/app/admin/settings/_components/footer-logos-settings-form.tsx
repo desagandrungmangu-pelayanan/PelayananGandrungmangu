@@ -13,8 +13,8 @@ import { FooterLogosInfo } from '@/lib/types';
 import { Skeleton } from '@/components/ui/skeleton';
 import Image from 'next/image';
 
-const CLOUD_NAME = 'dbkufesrp';
-const UPLOAD_PRESET = 'webdesa';
+const CLOUD_NAME = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME || 'dbkufesrp';
+const UPLOAD_PRESET = process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET || 'berita_desa';
 
 const defaultFooterLogos: FooterLogosInfo = {
   logo1Url: "",

@@ -28,6 +28,7 @@ const COLORS = ['#1e293b', '#eab308', '#059669', '#3b82f6', '#8b5cf6', '#f43f5e'
 export function StatisticsDashboard() {
   const [filterDusun, setFilterDusun] = useState('Semua Wilayah');
   const [filterTahun, setFilterTahun] = useState('2024');
+  const [isExporting, setIsExporting] = useState(false);
   const firestore = useFirestore();
   const { toast } = useToast();
   const reportRef = useRef<HTMLDivElement>(null);
@@ -76,34 +77,62 @@ export function StatisticsDashboard() {
       };
     }
 
+    const total = targetStats.total || 0;
+    const totalKK = targetStats.totalKK || 0;
+    const malePercent = targetStats.malePercent || 0;
+    const femalePercent = targetStats.femalePercent || 0;
+    const male = targetStats.male ?? Math.round((total * malePercent) / 100);
+    const female = targetStats.female ?? (total - male);
+
+    const ageData = targetStats.ageGroupData || targetStats.ageData || [
+      { name: 'Anak (0-14)', value: 0 },
+      { name: 'Produktif (15-64)', value: 0 },
+      { name: 'Lansia (65+)', value: 0 },
+    ];
+    const eduData = targetStats.educationData || targetStats.eduData || [
+      { name: 'SD', value: 0 },
+      { name: 'SMP', value: 0 },
+      { name: 'SMA', value: 0 },
+      { name: 'Diploma/Sarjana', value: 0 },
+      { name: 'Lainnya', value: 0 },
+    ];
+    const jobData = targetStats.occupationData || targetStats.jobData || [
+      { name: 'Petani', value: 0 },
+      { name: 'Buruh', value: 0 },
+      { name: 'Swasta', value: 0 },
+      { name: 'Pelajar', value: 0 },
+      { name: 'PNS/TNI', value: 0 },
+      { name: 'Lainnya', value: 0 },
+    ];
+
+    let dusunData = targetStats.dusunData;
+    if (!Array.isArray(dusunData)) {
+      if (statsDoc.dusunData && typeof statsDoc.dusunData === 'object') {
+        dusunData = Object.keys(statsDoc.dusunData).map(k => ({
+          name: k,
+          value: statsDoc.dusunData[k]?.total || 0,
+        }));
+      } else {
+        dusunData = [];
+      }
+    }
+
     return {
-      total: targetStats.total || 0,
-      totalKK: targetStats.totalKK || 0,
-      malePercent: targetStats.malePercent || 0,
-      femalePercent: targetStats.femalePercent || 0,
-      ageData: targetStats.ageData || [
-        { name: 'Anak (0-14)', value: 0 },
-        { name: 'Produktif (15-64)', value: 0 },
-        { name: 'Lansia (65+)', value: 0 },
-      ],
-      eduData: targetStats.eduData || [
-        { name: 'SD', value: 0 },
-        { name: 'SMP', value: 0 },
-        { name: 'SMA', value: 0 },
-        { name: 'Diploma/Sarjana', value: 0 },
-        { name: 'Lainnya', value: 0 },
-      ],
-      jobData: targetStats.jobData || [
-        { name: 'Petani', value: 0 },
-        { name: 'Buruh', value: 0 },
-        { name: 'Swasta', value: 0 },
-        { name: 'Pelajar', value: 0 },
-        { name: 'PNS/TNI', value: 0 },
-        { name: 'Lainnya', value: 0 },
-      ],
+      total,
+      totalKK,
+      male,
+      female,
+      malePercent,
+      femalePercent,
+      ageData,
+      ageGroupData: ageData,
+      eduData,
+      educationData: eduData,
+      jobData,
+      occupationData: jobData,
+      dusunData,
       rwData: targetStats.rwData || [],
       rtData: targetStats.rtData || [],
-      // Mock mutation data for preview
       mutationData: statsDoc.mutationData || [
         { month: 'Jan', lahir: 12, mati: 5, datang: 8, pindah: 4 },
         { month: 'Feb', lahir: 15, mati: 3, datang: 10, pindah: 6 },
@@ -149,7 +178,7 @@ export function StatisticsDashboard() {
           ['Perempuan', `${stats.female.toLocaleString('id-ID')} (${stats.femalePercent}%)`, 'Perempuan'],
         ],
         theme: 'grid',
-        headStyles: { fillStyle: 'F', fillColor: [30, 58, 138] },
+        headStyles: { fillColor: [30, 58, 138] },
       });
 
       if (stats.dusunData.length > 0) {

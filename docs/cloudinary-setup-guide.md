@@ -18,26 +18,26 @@ Fitur upload logo footer menggunakan Cloudinary untuk storage dan serve image. B
 2. Scroll ke bagian **Upload presets**
 3. Klik **Add upload preset**
 4. Isi form:
-   - **Name**: `desa_Gandrungmangu` (HARUS sama dengan yang di code)
+   - **Name**: `berita_desa` (HARUS sama dengan yang di code/env)
    - **Unsigned**: Pilih **ON** (sangat penting untuk client-side)
    - **Resource type**: Images
-   - **Folder**: `desa-gandrungmangu/footer-logos` (optional, untuk organisir)
+   - **Folder**: `berita_desa` (optional, untuk organisir)
 5. Klik **Save**
 
 ## 3. Verifikasi Setup
 
 Upload preset harus memiliki setting:
 - ✅ Unsigned = ON
-- ✅ Name = `desa_Gandrungmangu`
+- ✅ Name = `berita_desa`
 - ✅ Resource type = Image
 
 ## 4. Update Code jika Berbeda
 
 File: `src/app/admin/settings/_components/footer-logos-settings-form.tsx`
 
-Jika Cloud Name Anda berbeda, ubah baris ini:
+Pengaturan `CLOUD_NAME` dan `UPLOAD_PRESET` diambil secara otomatis dari variabel lingkungan (`NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME` dan `NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET`).
 ```typescript
-const response = await fetch('https://api.cloudinary.com/v1_1/desa-gandrungmangu/image/upload', {
+const response = await fetch(`https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`, {
 ```
 
 Ganti `desa-gandrungmangu` dengan Cloud Name Anda.

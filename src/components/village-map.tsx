@@ -8,19 +8,19 @@ import { Skeleton } from '@/components/ui/skeleton';
 const MapContainer = dynamic(
   () => import('react-leaflet').then(mod => mod.MapContainer),
   { ssr: false }
-);
+) as any;
 const TileLayer = dynamic(
   () => import('react-leaflet').then(mod => mod.TileLayer),
   { ssr: false }
-);
+) as any;
 const Marker = dynamic(
   () => import('react-leaflet').then(mod => mod.Marker),
   { ssr: false }
-);
+) as any;
 const Popup = dynamic(
   () => import('react-leaflet').then(mod => mod.Popup),
   { ssr: false }
-);
+) as any;
 
 export function VillageMap() {
   const [isClient, setIsClient] = useState(false);
@@ -42,7 +42,8 @@ export function VillageMap() {
     const script = document.createElement('script');
     script.src = 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js';
     script.onload = () => {
-      import('leaflet').then(L => {
+      const L = (window as any).L;
+      if (L) {
         // Setup default marker icons
         delete (L.Icon.Default.prototype as any)._getIconUrl;
         L.Icon.Default.mergeOptions({
@@ -51,7 +52,7 @@ export function VillageMap() {
           shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-shadow.png',
         });
         setLeafletInstance(L);
-      });
+      }
     };
     document.head.appendChild(script);
 

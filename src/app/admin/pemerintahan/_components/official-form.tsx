@@ -33,8 +33,8 @@ interface OfficialFormProps {
   official?: Official | null;
 }
 
-const CLOUD_NAME = 'dbkufesrp';
-const UPLOAD_PRESET = 'webdesa';
+const CLOUD_NAME = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME || 'dbkufesrp';
+const UPLOAD_PRESET = process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET || 'berita_desa';
 
 export function OfficialForm({ open, onOpenChange, official }: OfficialFormProps) {
   const [formData, setFormData] = useState({

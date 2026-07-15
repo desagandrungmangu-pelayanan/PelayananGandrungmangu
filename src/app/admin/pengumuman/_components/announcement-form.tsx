@@ -12,8 +12,8 @@ import { Loader2, Send, Image as ImageIcon } from 'lucide-react';
 import { useFirebase } from '@/firebase';
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
 
-const CLOUD_NAME = 'dbkufesrp';
-const UPLOAD_PRESET = 'webdesa';
+const CLOUD_NAME = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME || 'dbkufesrp';
+const UPLOAD_PRESET = process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET || 'berita_desa';
 
 export function AnnouncementForm() {
   const [title, setTitle] = useState('');

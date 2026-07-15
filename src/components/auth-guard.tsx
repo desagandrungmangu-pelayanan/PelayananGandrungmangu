@@ -32,15 +32,9 @@ export function AuthGuard({
         return;
       }
 
-      // Bypass for admin
-      if (user) {
-        setHasProfile(true);
-        return;
-      }
-
-      if (firestore) {
+      if (firestore && user) {
         try {
-          const profile = await getCitizenProfile(firestore, user.uid);
+          const profile = await getCitizenProfile(firestore, (user as any).uid);
           setHasProfile(!!profile);
         } catch (e) {
           console.error("Profile check error:", e);
