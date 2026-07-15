@@ -5,14 +5,14 @@ import { useDoc, useFirestore, useMemoFirebase } from '@/firebase';
 import { doc } from 'firebase/firestore';
 import { Resident } from '@/lib/types';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { 
-  BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, 
-  PieChart, Pie, Cell, Legend, LineChart, Line 
+import {
+  BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
+  PieChart, Pie, Cell, Legend, LineChart, Line
 } from 'recharts';
-import { 
-  Users, Home, UserCheck, UserPlus, 
-  Download, FileDown, Filter, Calendar, 
-  MapPin, Loader2, BarChart3, PieChart as PieChartIcon 
+import {
+  Users, Home, UserCheck, UserPlus,
+  Download, FileDown, Filter, Calendar,
+  MapPin, Loader2, BarChart3, PieChart as PieChartIcon
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
@@ -38,7 +38,7 @@ export function StatisticsDashboard() {
     return doc(firestore, 'villageProfile', 'statistics');
   }, [firestore]);
 
-  const { data: statsDoc, isLoading } = useDoc<any>(statsRef);
+  const { data: statsDoc, isLoading: statsLoading } = useDoc<any>(statsRef);
 
   // LOGIKA AGREGASI DATA
   const stats = useMemo(() => {
@@ -119,33 +119,105 @@ export function StatisticsDashboard() {
     const ws = XLSX.utils.json_to_sheet(stats.rwData);
     const wb = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, "Statistik");
-    XLSX.writeFile(wb, `Statistik_Pangawaren_${filterDusun}.xlsx`);
+    XLSX.writeFile(wb, `Statistik_Gandrungmangu_${filterDusun}.xlsx`);
     toast({ title: "Berhasil Unduh", description: "Data statistik telah disimpan dalam format Excel." });
   };
 
-  const handleDownloadPDF = () => {
-    const doc = new jsPDF();
-    doc.setFontSize(18);
-    doc.text('Grafik & Statistik Kependudukan Desa Pangawaren', 14, 22);
-    doc.setFontSize(11);
-    doc.text(`Wilayah: ${filterDusun} | Tahun: ${filterTahun}`, 14, 30);
-    
-    autoTable(doc, {
-      startY: 40,
-      head: [['Kategori', 'Jumlah']],
-      body: [
-        ['Total Penduduk', stats?.total.toString() || '0'],
-        ['Total KK', stats?.totalKK.toString() || '0'],
-        ['Persentase Laki-Laki', `${stats?.malePercent}%`],
-        ['Persentase Perempuan', `${stats?.femalePercent}%`],
-      ],
+  const handleDownloadPDF = async () => {
+    if (!stats) return;
+    setIsExporting(true);
+    toast({
+      title: "Memproses Cetak Laporan",
+      description: "Menyiapkan dokumen PDF Laporan Kependudukan...",
     });
 
-    doc.save(`Statistik_Desa_${filterDusun}.pdf`);
-    toast({ title: "Berhasil Cetak", description: "Dokumen PDF sedang diunduh." });
+    try {
+      const doc = new jsPDF();
+      doc.setFontSize(18);
+      doc.text("LAPORAN DEMOGRAFI & KEPENDUDUKAN", 14, 22);
+      doc.setFontSize(11);
+      doc.text(`Desa Gandrungmangu - Wilayah: ${filterDusun} (Tahun ${filterTahun})`, 14, 30);
+      doc.text(`Tanggal Cetak: ${new Date().toLocaleDateString('id-ID')}`, 14, 36);
+
+      autoTable(doc, {
+        startY: 44,
+        head: [['Indikator Kependudukan', 'Jumlah (Jiwa)', 'Keterangan']],
+        body: [
+          ['Total Penduduk', stats.total.toLocaleString('id-ID'), 'Total Terdaftar'],
+          ['Total Kepala Keluarga (KK)', stats.totalKK.toLocaleString('id-ID'), 'Kartu Keluarga'],
+          ['Laki-Laki', `${stats.male.toLocaleString('id-ID')} (${stats.malePercent}%)`, 'Laki-laki'],
+          ['Perempuan', `${stats.female.toLocaleString('id-ID')} (${stats.femalePercent}%)`, 'Perempuan'],
+        ],
+        theme: 'grid',
+        headStyles: { fillStyle: 'F', fillColor: [30, 58, 138] },
+      });
+
+      if (stats.dusunData.length > 0) {
+        autoTable(doc, {
+          startY: (doc as any).lastAutoTable.finalY + 10,
+          head: [['Nama Dusun', 'Jumlah Penduduk (Jiwa)']],
+          body: stats.dusunData.map((d: any) => [d.name, d.value.toLocaleString('id-ID')]),
+          theme: 'striped',
+          headStyles: { fillColor: [30, 58, 138] },
+        });
+      }
+
+      doc.save(`Laporan_Kependudukan_Desa_Gandrungmangu_${filterTahun}.pdf`);
+
+      toast({
+        title: "Berhasil Diunduh",
+        description: "Laporan PDF telah tersimpan di perangkat Anda.",
+      });
+    } catch (err) {
+      toast({
+        title: "Gagal Mengunduh PDF",
+        description: "Terjadi kesalahan saat menggenerasi file PDF.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsExporting(false);
+    }
   };
 
-  if (isLoading) {
+  const handleExportExcel = () => {
+    if (!stats) return;
+
+    try {
+      const summarySheet = XLSX.utils.json_to_sheet([
+        { Indikator: 'Total Penduduk', Jumlah: stats.total, Keterangan: 'Jiwa' },
+        { Indikator: 'Total KK', Jumlah: stats.totalKK, Keterangan: 'KK' },
+        { Indikator: 'Laki-Laki', Jumlah: stats.male, Keterangan: `${stats.malePercent}%` },
+        { Indikator: 'Perempuan', Jumlah: stats.female, Keterangan: `${stats.femalePercent}%` },
+      ]);
+
+      const dusunSheet = XLSX.utils.json_to_sheet(stats.dusunData.map((d: any) => ({ Dusun: d.name, Penduduk: d.value })));
+      const ageSheet = XLSX.utils.json_to_sheet(stats.ageGroupData.map((d: any) => ({ 'Kelompok Usia': d.name, Jumlah: d.value })));
+      const eduSheet = XLSX.utils.json_to_sheet(stats.educationData.map((d: any) => ({ Pendidikan: d.name, Jumlah: d.value })));
+      const occSheet = XLSX.utils.json_to_sheet(stats.occupationData.map((d: any) => ({ Pekerjaan: d.name, Jumlah: d.value })));
+
+      const wb = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(wb, summarySheet, "Ringkasan");
+      XLSX.utils.book_append_sheet(wb, dusunSheet, "Per Dusun");
+      XLSX.utils.book_append_sheet(wb, ageSheet, "Kelompok Usia");
+      XLSX.utils.book_append_sheet(wb, eduSheet, "Pendidikan");
+      XLSX.utils.book_append_sheet(wb, occSheet, "Pekerjaan");
+
+      XLSX.writeFile(wb, `Data_Kependudukan_Desa_Gandrungmangu_${filterTahun}.xlsx`);
+
+      toast({
+        title: "Excel Berhasil Diunduh",
+        description: "File Excel spreadsheet kependudukan berhasil disimpan.",
+      });
+    } catch (err) {
+      toast({
+        title: "Gagal Mengunduh Excel",
+        description: "Terjadi kesalahan saat membuat file spreadsheet.",
+        variant: "destructive",
+      });
+    }
+  };
+
+  if (statsLoading) {
     return (
       <div className="space-y-12">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
@@ -162,7 +234,7 @@ export function StatisticsDashboard() {
   if (!stats) {
     return (
       <div className="flex flex-col items-center justify-center p-12 text-center bg-white rounded-[3rem] border border-slate-100 shadow-sm max-w-2xl mx-auto space-y-6 my-12">
-        <BarChart3 className="h-16 w-16 text-emerald-600 animate-pulse" />
+        <BarChart3 className="h-16 w-16 text-blue-600 animate-pulse" />
         <h2 className="text-2xl font-black uppercase tracking-tight text-slate-800">Statistik Belum Tersedia</h2>
         <p className="text-slate-500 leading-relaxed font-medium">
           Data grafik dan statistik demografi belum dibuat atau sedang diperbarui oleh administrator.
@@ -219,7 +291,7 @@ export function StatisticsDashboard() {
             </Select>
           </div>
 
-          <Button onClick={handleDownloadPDF} variant="outline" className="h-12 px-6 rounded-xl border-primary text-primary font-bold hover:bg-primary/5">
+          <Button onClick={handleDownloadPDF} variant="outline" className="h-12 px-6 rounded-xl border-blue-600 text-blue-600 font-bold hover:bg-blue-50">
             <FileDown className="h-4 w-4 mr-2" />
             Cetak PDF
           </Button>
@@ -230,7 +302,7 @@ export function StatisticsDashboard() {
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
         {[
           { label: 'Total Penduduk', value: stats?.total.toLocaleString('id-ID'), icon: Users, color: 'text-blue-600', bg: 'bg-blue-50' },
-          { label: 'Total Keluarga (KK)', value: stats?.totalKK.toLocaleString('id-ID'), icon: Home, color: 'text-emerald-600', bg: 'bg-emerald-50' },
+          { label: 'Total Keluarga (KK)', value: stats?.totalKK.toLocaleString('id-ID'), icon: Home, color: 'text-blue-700', bg: 'bg-blue-50' },
           { label: 'Laki-Laki (%)', value: `${stats?.malePercent}%`, icon: UserCheck, color: 'text-amber-600', bg: 'bg-amber-50' },
           { label: 'Perempuan (%)', value: `${stats?.femalePercent}%`, icon: UserPlus, color: 'text-rose-600', bg: 'bg-rose-50' },
         ].map((card, i) => (
@@ -240,103 +312,68 @@ export function StatisticsDashboard() {
                 <card.icon className="h-8 w-8" />
               </div>
               <div>
-                <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{card.label}</p>
-                <h3 className="text-3xl font-black text-slate-900 mt-1">{card.value}</h3>
+                <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">{card.label}</p>
+                <h3 className="text-3xl font-black text-slate-900 font-display tracking-tight mt-1">{card.value}</h3>
               </div>
             </CardContent>
           </Card>
         ))}
       </div>
 
-      {/* CHARTS DEMOGRAFI */}
+      {/* CHARTS GRID 1: DEMOGRAFI & USIA */}
       <div className="grid lg:grid-cols-2 gap-10">
         <Card className="rounded-[3rem] border-none shadow-sm overflow-hidden bg-white">
-          <CardHeader className="p-10 pb-0">
-            <div className="flex items-center gap-4">
-               <div className="p-3 bg-primary/5 text-primary rounded-2xl"><PieChartIcon className="h-6 w-6" /></div>
-               <div>
-                  <CardTitle className="text-xl font-black uppercase italic tracking-tight leading-none">Kelompok Umur</CardTitle>
-                  <CardDescription className="text-xs font-bold uppercase text-slate-400 mt-2 tracking-widest">Distribusi Rentang Usia</CardDescription>
-               </div>
-            </div>
+          <CardHeader className="p-10">
+            <CardTitle className="text-xl font-black uppercase italic">Komposisi Gender</CardTitle>
+            <CardDescription className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Rasio Laki-laki vs Perempuan</CardDescription>
           </CardHeader>
           <CardContent className="p-10 h-[350px]">
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
                 <Pie
-                  data={stats?.ageData}
-                  cx="50%"
-                  cy="50%"
-                  innerRadius={60}
-                  outerRadius={100}
-                  paddingAngle={8}
+                  data={[
+                    { name: 'Laki-Laki', value: stats?.male },
+                    { name: 'Perempuan', value: stats?.female }
+                  ]}
+                  innerRadius={80}
+                  outerRadius={110}
+                  paddingAngle={5}
                   dataKey="value"
                 >
-                  {stats?.ageData.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                  ))}
+                  <Cell fill="#1e3a8a" />
+                  <Cell fill="#f43f5e" />
                 </Pie>
                 <Tooltip />
-                <Legend iconType="circle" />
+                <Legend verticalAlign="bottom" height={36} />
               </PieChart>
             </ResponsiveContainer>
           </CardContent>
         </Card>
 
         <Card className="rounded-[3rem] border-none shadow-sm overflow-hidden bg-white">
-          <CardHeader className="p-10 pb-0">
-            <div className="flex items-center gap-4">
-               <div className="p-3 bg-primary/5 text-primary rounded-2xl"><FileDown className="h-6 w-6" /></div>
-               <div>
-                  <CardTitle className="text-xl font-black uppercase italic tracking-tight leading-none">Tingkat Pendidikan</CardTitle>
-                  <CardDescription className="text-xs font-bold uppercase text-slate-400 mt-2 tracking-widest">Jenjang Pendidikan Terakhir</CardDescription>
-               </div>
-            </div>
+          <CardHeader className="p-10">
+            <CardTitle className="text-xl font-black uppercase italic">Distribusi Usia</CardTitle>
+            <CardDescription className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Kelompok Usia Produktif & Non-Produktif</CardDescription>
           </CardHeader>
           <CardContent className="p-10 h-[350px]">
             <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={stats?.eduData} margin={{ top: 20 }}>
-                <CartesianGrid vertical={false} strokeDasharray="3 3" opacity={0.2} />
+              <BarChart data={stats?.ageGroupData}>
                 <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fontSize: 10, fontWeight: 800 }} />
                 <YAxis hide />
-                <Tooltip cursor={{ fill: 'transparent' }} />
-                <Bar dataKey="value" fill="#1e293b" radius={[8, 8, 0, 0]} barSize={40} />
+                <Tooltip />
+                <Bar dataKey="value" fill="#3b82f6" radius={[12, 12, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </CardContent>
         </Card>
       </div>
 
-      {/* CHART PEKERJAAN - HORIZONTAL */}
-      <Card className="rounded-[3rem] border-none shadow-sm overflow-hidden bg-white">
-        <CardHeader className="p-10">
-          <CardTitle className="text-xl font-black uppercase italic">Top Jenis Pekerjaan</CardTitle>
-          <CardDescription className="text-xs font-bold uppercase text-slate-400 tracking-widest">Dominasi Sektor Ekonomi</CardDescription>
-        </CardHeader>
-        <CardContent className="p-10 h-[400px]">
-          <ResponsiveContainer width="100%" height="100%">
-            <BarChart layout="vertical" data={stats?.jobData} margin={{ left: 40, right: 40 }}>
-              <XAxis type="number" hide />
-              <YAxis 
-                type="category" 
-                dataKey="name" 
-                width={100} 
-                axisLine={false} 
-                tickLine={false} 
-                tick={{ fontSize: 10, fontWeight: 900, fill: '#64748b' }} 
-              />
-              <Tooltip />
-              <Bar dataKey="value" fill="#eab308" radius={[0, 10, 10, 0]} barSize={24} />
-            </BarChart>
-          </ResponsiveContainer>
-        </CardContent>
-      </Card>
-
-      {/* SEBARAN & MUTASI */}
+      {/* CHARTS GRID 2: WILAYAH & PERTUMBUHAN */}
       <div className="grid lg:grid-cols-2 gap-10">
         <Card className="rounded-[3rem] border-none shadow-sm overflow-hidden bg-white">
           <CardHeader className="p-10">
-            <CardTitle className="text-xl font-black uppercase italic">Kepadatan Per Wilayah (RW)</CardTitle>
+            <CardTitle className="text-xl font-black uppercase italic">Sebaran per RW</CardTitle>
+            <CardDescription className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Kepadatan Penduduk Tiap RW</CardDescription>
           </CardHeader>
           <CardContent className="p-10 h-[350px]">
             <ResponsiveContainer width="100%" height="100%">
@@ -344,7 +381,7 @@ export function StatisticsDashboard() {
                 <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fontSize: 10, fontWeight: 800 }} />
                 <YAxis hide />
                 <Tooltip />
-                <Bar dataKey="value" fill="#059669" radius={[12, 12, 0, 0]} />
+                <Bar dataKey="value" fill="#1e3a8a" radius={[12, 12, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </CardContent>
@@ -362,8 +399,8 @@ export function StatisticsDashboard() {
                 <XAxis dataKey="month" axisLine={false} tickLine={false} tick={{ fontSize: 10, fontWeight: 800 }} />
                 <YAxis hide />
                 <Tooltip />
-                <Legend verticalAlign="top" height={36}/>
-                <Line type="monotone" dataKey="lahir" stroke="#059669" strokeWidth={4} dot={{ r: 4 }} />
+                <Legend verticalAlign="top" height={36} />
+                <Line type="monotone" dataKey="lahir" stroke="#1e3a8a" strokeWidth={4} dot={{ r: 4 }} />
                 <Line type="monotone" dataKey="mati" stroke="#f43f5e" strokeWidth={4} dot={{ r: 4 }} />
                 <Line type="monotone" dataKey="datang" stroke="#3b82f6" strokeWidth={4} dot={{ r: 4 }} />
                 <Line type="monotone" dataKey="pindah" stroke="#eab308" strokeWidth={4} dot={{ r: 4 }} />
@@ -378,7 +415,7 @@ export function StatisticsDashboard() {
         <div className="space-y-1 text-center md:text-left">
           <p className="text-[10px] font-black uppercase tracking-[0.3em] text-secondary">Akurasi & Integritas</p>
           <p className="text-sm font-medium text-slate-400 italic leading-relaxed">
-            Sumber Data: Sistem Informasi Desa (SID) Pangawaren Digital. <br className="hidden sm:block"/>
+            Sumber Data: Sistem Informasi Desa (SID) Gandrungmangu Digital. <br className="hidden sm:block" />
             Data diperbarui secara otomatis berdasarkan pendaftaran penduduk terbaru.
           </p>
         </div>

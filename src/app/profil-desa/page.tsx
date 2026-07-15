@@ -188,7 +188,7 @@ export default function ProfilDesaPage() {
 
             {/* Mobile Menu Dropdown Selector */}
             <div className="block lg:hidden w-full relative mb-6">
-              <button 
+              <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 className="w-full flex items-center justify-between bg-primary text-white px-5 py-4 rounded-xl shadow-md font-black uppercase text-[10px] tracking-wider"
               >
@@ -198,7 +198,7 @@ export default function ProfilDesaPage() {
                 </div>
                 <ChevronDown className={cn("h-4 w-4 transition-transform duration-200", isMenuOpen && "rotate-180")} />
               </button>
-              
+
               {isMenuOpen && (
                 <>
                   <div className="fixed inset-0 z-40" onClick={() => setIsMenuOpen(false)} />
@@ -259,7 +259,7 @@ export default function ProfilDesaPage() {
         <div className="container mx-auto px-4 text-center">
           <Logo />
           <p className="mt-8 text-[10px] font-bold uppercase tracking-widest">
-            © 2026 Pemerintah Desa Pangawaren Digital Portal
+            © 2026 Pemerintah Desa Gandrungmangu Digital Portal
           </p>
         </div>
       </footer>
@@ -285,14 +285,14 @@ function SambutanTab({ kadesPhotoUrl }: { kadesPhotoUrl?: string }) {
             <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent" />
           </div>
           <div className="p-6 md:p-8 text-center bg-primary text-white">
-            <h3 className="text-xl font-black uppercase tracking-tight font-display italic">SUHUD</h3>
-            <p className="text-[10px] font-bold text-secondary uppercase tracking-[0.3em] mt-1">Kepala Desa Pangawaren</p>
+            <h3 className="text-xl font-black uppercase tracking-tight font-display italic">NURYANI</h3>
+            <p className="text-[10px] font-bold text-secondary uppercase tracking-[0.3em] mt-1">Kepala Desa Gandrungmangu</p>
           </div>
         </Card>
       </div>
       <div className="md:col-span-8 lg:col-span-8 bg-white p-6 md:p-16 rounded-3xl md:rounded-[4rem] border shadow-sm space-y-8">
         <div className="space-y-4">
-          <Badge className="bg-emerald-50 text-emerald-700 font-black uppercase text-[10px] tracking-widest px-4 py-1.5 border-none shadow-sm">
+          <Badge className="bg-blue-50 text-blue-700 font-black uppercase text-[10px] tracking-widest px-4 py-1.5 border-none shadow-sm">
             Sambutan Resmi
           </Badge>
           <h2 className="text-2xl sm:text-4xl md:text-6xl font-black text-slate-900 leading-tight uppercase font-display italic tracking-tighter">
@@ -301,14 +301,14 @@ function SambutanTab({ kadesPhotoUrl }: { kadesPhotoUrl?: string }) {
         </div>
         <div className="prose prose-slate max-w-none">
           <p className="text-sm md:text-lg leading-relaxed text-slate-600 font-medium italic border-l-4 md:border-l-8 border-secondary pl-4 md:pl-8 py-2">
-            "Assalamu'alaikum Warahmatullahi Wabarakatuh. Selamat datang di portal resmi digital Desa Pangawaren. Website ini adalah perwujudan dari visi kami untuk menciptakan transparansi dan kemudahan layanan bagi seluruh warga."
+            "Assalamu'alaikum Warahmatullahi Wabarakatuh. Selamat datang di portal resmi digital Desa Gandrungmangu. Website ini adalah perwujudan dari visi kami untuk menciptakan transparansi dan kemudahan layanan bagi seluruh warga."
           </p>
           <div className="space-y-6 text-slate-700 text-sm md:text-lg leading-relaxed pt-6">
             <p>
-              Di era transformasi digital ini, kami menyadari bahwa kecepatan informasi dan kemudahan akses layanan adalah kunci kemajuan sebuah wilayah. Desa Pangawaren tidak ingin tertinggal. Kami hadirkan sistem layanan mandiri ini agar warga dapat mengurus administrasi dari mana saja, kapan saja.
+              Di era transformasi digital ini, kami menyadari bahwa kecepatan informasi dan kemudahan akses layanan adalah kunci kemajuan sebuah wilayah. Desa Gandrungmangu tidak ingin tertinggal. Kami hadirkan sistem layanan mandiri ini agar warga dapat mengurus administrasi dari mana saja, kapan saja.
             </p>
             <p>
-              Portal ini tidak hanya tentang surat-menyurat, tapi juga tentang keterbukaan anggaran desa, promosi produk UMKM warga, dan penyebaran berita kegiatan pembangunan desa secara real-time. Mari bersama-sama kita bangun Pangawaren menjadi desa yang mandiri, cerdas, dan bermartabat.
+              Portal ini tidak hanya tentang surat-menyurat, tapi juga tentang keterbukaan anggaran desa, promosi produk UMKM warga, dan penyebaran berita kegiatan pembangunan desa secara real-time. Mari bersama-sama kita bangun Gandrungmangu menjadi desa yang mandiri, cerdas, dan bermartabat.
             </p>
           </div>
         </div>
@@ -329,7 +329,7 @@ function KenaliTab({ data, isLoading }: { data: any, isLoading: boolean }) {
     <div className="space-y-16">
       <div className="space-y-4">
         <h2 className="text-4xl font-black text-slate-900 uppercase font-display italic">Struktur <span className="text-primary not-italic">Pemerintahan</span></h2>
-        <p className="text-slate-500 font-medium text-lg border-l-4 border-secondary pl-4 uppercase tracking-tight">Mengenal Pelayan Masyarakat Desa Pangawaren</p>
+        <p className="text-slate-500 font-medium text-lg border-l-4 border-secondary pl-4 uppercase tracking-tight">Mengenal Pelayan Masyarakat Desa Gandrungmangu</p>
       </div>
 
       <div className="space-y-20">
@@ -396,164 +396,296 @@ function KenaliTab({ data, isLoading }: { data: any, isLoading: boolean }) {
 }
 
 function SejarahTab() {
-  const historyEvents = [
-    { year: 'Masa Lampau', title: 'Asal-Usul Nama', desc: 'Nama Pangawaren berakar dari kata "Kawer" yang merujuk pada kondisi geografis wilayah yang subur sebagai lumbung pangan potensial.', icon: Landmark },
-    { year: '1970 - 1980', title: 'Era Pembangunan Awal', desc: 'Pembentukan struktur pemerintahan desa yang lebih terorganisir dan pembangunan infrastruktur dasar jalan desa.', icon: MapPin },
-    { year: '1990 - 2010', title: 'Modernisasi Pertanian', desc: 'Optimalisasi lahan sawah dan irigasi teknis yang menjadikan desa sebagai produsen padi utama di tingkat kecamatan.', icon: Zap },
-    { year: '2020 - 2025', title: 'Transformasi Desa Digital', desc: 'Peluncuran sistem pelayanan mandiri online, transparansi anggaran daring, dan penyediaan akses internet publik di area balai desa.', icon: Activity },
-    { year: '2026', title: 'Masa Depan', desc: 'Visi mewujudkan kemandirian ekonomi desa berbasis inovasi teknologi dan pemberdayaan UMKM lokal.', icon: TrendingUp },
-  ];
-
   return (
-    <div className="space-y-16 max-w-4xl mx-auto">
+    <div className="space-y-12 max-w-4xl mx-auto">
+      {/* HEADER */}
       <div className="text-center space-y-4">
-        <h2 className="text-4xl font-black text-slate-900 uppercase font-display italic">Garis Waktu <span className="text-primary not-italic">Sejarah</span></h2>
-        <p className="text-slate-500 font-bold uppercase text-[10px] tracking-[0.4em]">Menelusuri Jejak Langkah Desa Pangawaren</p>
+        <Badge className="bg-blue-50 text-blue-700 font-black uppercase text-[10px] tracking-widest px-4 py-1.5 border-none shadow-sm">
+          Sejarah Desa
+        </Badge>
+        <h2 className="text-3xl md:text-5xl font-black text-slate-900 uppercase font-display italic tracking-tight">
+          Selayang Pandang <span className="text-primary not-italic">Sejarah Desa Gandrungmangu</span>
+        </h2>
+        <div className="w-24 h-1.5 bg-secondary mx-auto rounded-full" />
       </div>
 
-      <div className="relative space-y-12">
-        {/* Vertical Line */}
-        <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-1 bg-primary/10 -translate-x-1/2" />
+      {/* MAIN CONTENT CARD */}
+      <Card className="rounded-3xl md:rounded-[3.5rem] border-none shadow-xl bg-white overflow-hidden">
+        <CardContent className="p-8 md:p-14 space-y-8 text-slate-700 text-base md:text-lg leading-relaxed font-normal">
+          <p>
+            Desa Gandrungmangu merupakan salah satu desa yang berada di wilayah Kecamatan Gandrungmangu, Kabupaten Cilacap, Provinsi Jawa Tengah. Berlokasi di pusat kecamatan, desa ini sejak dahulu memiliki peran strategis sebagai pusat pemerintahan, perdagangan, pendidikan, dan pelayanan masyarakat. Posisinya yang berada pada jalur penghubung Jawa Tengah dan Jawa Barat menjadikan Desa Gandrungmangu berkembang sebagai kawasan yang dinamis dengan aktivitas ekonomi dan sosial yang terus tumbuh.
+          </p>
 
-        {historyEvents.map((event, i) => (
-          <div key={i} className={cn(
-            "relative flex items-center gap-10",
-            i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-          )}>
-            {/* Timeline Dot */}
-            <div className="absolute left-4 md:left-1/2 -translate-x-1/2 w-10 h-10 rounded-2xl bg-primary border-4 border-white shadow-xl flex items-center justify-center z-10">
-              <event.icon className="h-4 w-4 text-secondary" />
-            </div>
+          <p>
+            Sejarah awal Desa Gandrungmangu belum terdokumentasikan secara lengkap dalam sumber tertulis. Namun berdasarkan cerita yang berkembang di tengah masyarakat, wilayah ini telah dihuni sejak ratusan tahun silam dan menjadi bagian dari perkembangan kawasan barat Kabupaten Cilacap yang memiliki keterkaitan erat dengan budaya Jawa dan Sunda. Pengaruh budaya tersebut masih dapat dijumpai dalam tradisi, bahasa, kesenian, serta nilai-nilai kehidupan masyarakat yang diwariskan dari generasi ke generasi.
+          </p>
 
-            {/* Content Side */}
-            <div className="flex-1 pl-12 md:pl-0">
-              <Card className={cn(
-                "rounded-3xl md:rounded-[2.5rem] border-none shadow-sm hover:shadow-2xl transition-all duration-500 bg-white group overflow-hidden",
-                i % 2 === 0 ? "md:mr-12" : "md:ml-12"
-              )}>
-                <div className={cn("h-2 w-full", i % 2 === 0 ? "bg-primary" : "bg-secondary")} />
-                <CardContent className="p-6 md:p-10 space-y-4">
-                  <div className="flex items-center justify-between">
-                    <span className="text-[10px] font-black text-primary uppercase tracking-widest">{event.year}</span>
-                    <Calendar className="h-4 w-4 text-slate-200" />
-                  </div>
-                  <h4 className="text-xl md:text-2xl font-black uppercase text-slate-900 italic tracking-tight">{event.title}</h4>
-                  <p className="text-slate-500 leading-relaxed font-medium">
-                    {event.desc}
-                  </p>
-                </CardContent>
-              </Card>
-            </div>
+          <p>
+            Sebagai desa yang tumbuh di kawasan agraris, kehidupan masyarakat Gandrungmangu sejak dahulu bertumpu pada sektor pertanian, perkebunan, peternakan, dan perdagangan. Semangat gotong royong, musyawarah, serta kebersamaan menjadi fondasi utama dalam membangun kehidupan sosial yang harmonis. Nilai-nilai tersebut tetap terpelihara hingga kini dan menjadi bagian penting dalam setiap proses pembangunan desa.
+          </p>
 
-            {/* Empty Side (For desktop symmetry) */}
-            <div className="hidden md:flex flex-1" />
+          <p>
+            Memasuki era modern, Desa Gandrungmangu terus bertransformasi menjadi desa yang maju dan adaptif terhadap perkembangan teknologi. Berbagai inovasi pelayanan publik berbasis digital dikembangkan untuk memberikan kemudahan, kecepatan, serta transparansi kepada masyarakat, tanpa meninggalkan kearifan lokal yang telah menjadi identitas desa selama bertahun-tahun.
+          </p>
+
+          <p>
+            Kini, Desa Gandrungmangu terus melangkah menuju desa yang mandiri, maju, dan sejahtera melalui pembangunan yang berkelanjutan di berbagai bidang, mulai dari pemerintahan, infrastruktur, pendidikan, kesehatan, ekonomi, hingga pemberdayaan masyarakat. Dengan semangat kebersamaan dan pelayanan yang prima, Pemerintah Desa Gandrungmangu berkomitmen mewujudkan tata kelola pemerintahan yang profesional, transparan, akuntabel, dan berorientasi pada kesejahteraan seluruh warga.
+          </p>
+
+          {/* HIGHLIGHT / QUOTE BOX */}
+          <div className="mt-10 p-6 md:p-8 bg-slate-900 text-white rounded-2xl md:rounded-3xl border-l-8 border-secondary space-y-3 shadow-lg">
+            <p className="text-lg md:text-xl font-bold italic tracking-wide text-secondary">
+              &quot;Melestarikan sejarah, menjaga budaya, membangun masa depan.&quot;
+            </p>
+            <p className="text-sm md:text-base text-slate-300 font-medium leading-relaxed">
+              Itulah semangat yang menjadi pijakan Desa Gandrungmangu dalam menghadapi tantangan zaman, sekaligus mewariskan nilai-nilai luhur kepada generasi penerus.
+            </p>
           </div>
-        ))}
-      </div>
+        </CardContent>
+      </Card>
     </div>
   );
 }
 
 function PetaTab() {
   return (
-    <div className="grid lg:grid-cols-12 gap-6 lg:gap-10">
-      <div className="lg:col-span-8">
-        <Card className="rounded-3xl md:rounded-[3rem] overflow-hidden border-none shadow-xl h-[350px] sm:h-[500px] md:h-[650px] relative group">
-          <VillageMap />
-          <div className="absolute top-4 md:top-8 left-4 md:left-8 pointer-events-none z-10">
-            <Badge className="bg-primary text-white font-black uppercase text-[8px] md:text-[10px] tracking-widest px-4 md:px-6 py-1.5 md:py-2 rounded-full border-none shadow-2xl">
-              Live Map Interface
-            </Badge>
-          </div>
-        </Card>
+    <div className="space-y-10">
+      {/* SECTION TITLE & DESCRIPTION */}
+      <div className="space-y-3">
+        <Badge className="bg-blue-50 text-blue-700 font-black uppercase text-[10px] tracking-widest px-4 py-1.5 border-none shadow-sm">
+          Geografis & Pemetaan
+        </Badge>
+        <h2 className="text-3xl md:text-5xl font-black text-slate-900 uppercase font-display italic tracking-tight">
+          Peta & <span className="text-primary not-italic">Batas Wilayah</span>
+        </h2>
+        <p className="text-slate-600 font-medium text-base md:text-lg leading-relaxed max-w-3xl">
+          Berdasarkan peta administrasi wilayah Kecamatan Gandrungmangu dan data spasial, Desa Gandrungmangu memiliki batas wilayah yang strategis berada di pusat Kecamatan Gandrungmangu.
+        </p>
       </div>
-      <div className="lg:col-span-4 space-y-8">
-        <Card className="rounded-3xl md:rounded-[3rem] border-none bg-primary text-white overflow-hidden shadow-2xl">
-          <CardContent className="p-6 md:p-10 space-y-8 md:space-y-10">
-            <div className="space-y-4">
-              <p className="text-[10px] font-black uppercase tracking-[0.4em] text-secondary">Geografis</p>
-              <h3 className="text-3xl font-display font-semibold italic">Batas Wilayah</h3>
-            </div>
 
-            <div className="space-y-6">
-              {[
-                { dir: 'UTARA', label: 'Desa Tayem Timur' },
-                { dir: 'SELATAN', label: 'Desa Cidadap' },
-                { dir: 'TIMUR', label: 'Desa Karangpucung' },
-                { dir: 'BARAT', label: 'Desa Pamulihan' },
-              ].map((item, i) => (
-                <div key={i} className="flex items-center gap-4 group cursor-default">
-                  <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center font-black text-[10px] text-secondary border border-white/5 group-hover:bg-secondary group-hover:text-primary transition-all">
-                    {item.dir[0]}
-                  </div>
-                  <div className="space-y-0.5">
-                    <p className="text-[9px] font-black text-white/40 uppercase tracking-widest">{item.dir}</p>
-                    <p className="font-bold text-sm text-slate-100">{item.label}</p>
-                  </div>
-                </div>
-              ))}
+      <div className="grid lg:grid-cols-12 gap-6 lg:gap-10 items-start">
+        {/* MAP DISPLAY & ALAMAT BALAI DESA */}
+        <div className="lg:col-span-7 space-y-6">
+          <Card className="rounded-3xl md:rounded-[3rem] overflow-hidden border-none shadow-xl h-[380px] sm:h-[500px] md:h-[580px] relative group">
+            <VillageMap />
+            <div className="absolute top-4 md:top-8 left-4 md:left-8 pointer-events-none z-10">
+              <Badge className="bg-primary text-white font-black uppercase text-[8px] md:text-[10px] tracking-widest px-4 md:px-6 py-1.5 md:py-2 rounded-full border-none shadow-2xl">
+                Live Map Interface
+              </Badge>
             </div>
+          </Card>
 
-            <div className="pt-8 border-t border-white/10 space-y-4">
-              <div className="flex items-center gap-3">
-                <Compass className="h-5 w-5 text-secondary" />
-                <p className="text-[10px] font-black uppercase tracking-widest">Titik Koordinat Pusat</p>
+          {/* ALAMAT KANTOR BALAI DESA */}
+          <Card className="rounded-3xl md:rounded-[2.5rem] border border-slate-100 bg-white p-6 md:p-8 shadow-sm">
+            <div className="flex items-start gap-4">
+              <div className="p-3 bg-blue-50 text-blue-700 rounded-2xl shrink-0">
+                <MapPin className="h-6 w-6" />
               </div>
-              <div className="p-5 rounded-2xl bg-white/5 border border-white/10 font-mono text-xs text-secondary flex justify-between">
-                <span>LON: 108.862209</span>
-                <span>LAT: -7.389</span>
+              <div className="space-y-2">
+                <h4 className="text-lg font-black text-slate-900 uppercase tracking-tight font-display">Kantor Kepala Desa Gandrungmangu</h4>
+                <p className="text-slate-600 text-sm leading-relaxed font-medium">
+                  Jl. Raya No. 101, Desa Gandrungmangu, Kecamatan Gandrungmangu, Kabupaten Cilacap, Jawa Tengah 53254.
+                </p>
               </div>
             </div>
-          </CardContent>
-        </Card>
+          </Card>
+        </div>
+
+        {/* SIDE INFOS (BATAS WILAYAH & KOORDINAT) */}
+        <div className="lg:col-span-5 space-y-6">
+          {/* BATAS WILAYAH */}
+          <Card className="rounded-3xl md:rounded-[2.5rem] border-none bg-primary text-white overflow-hidden shadow-2xl">
+            <CardContent className="p-6 md:p-8 space-y-6">
+              <div className="space-y-2">
+                <p className="text-[10px] font-black uppercase tracking-[0.4em] text-secondary">Geografis</p>
+                <h3 className="text-2xl font-display font-semibold italic">Batas Wilayah Desa</h3>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                {[
+                  { dir: 'UTARA', label: 'Desa Cinangsi' },
+                  { dir: 'SELATAN', label: 'Desa Gandrungmanis' },
+                  { dir: 'TIMUR', label: 'Desa Muktisari' },
+                  { dir: 'BARAT', label: 'Desa Bulusari' },
+                ].map((item, i) => (
+                  <div key={i} className="flex items-center gap-3 p-3.5 rounded-2xl bg-white/10 border border-white/5 min-w-0 overflow-hidden">
+                    <div className="w-9 h-9 rounded-xl bg-secondary text-primary flex items-center justify-center font-black text-xs shrink-0 shadow-md">
+                      {item.dir[0]}
+                    </div>
+                    <div className="space-y-0.5 min-w-0 flex-1">
+                      <p className="text-[9px] font-black text-white/50 uppercase tracking-widest">{item.dir}</p>
+                      <p className="font-bold text-xs sm:text-[13px] text-slate-100 leading-snug break-words">{item.label}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <p className="text-xs text-white/70 leading-relaxed italic border-t border-white/10 pt-4">
+                Batas wilayah tersebut sesuai dengan posisi Desa Gandrungmangu sebagai desa yang berada di pusat Kecamatan Gandrungmangu.
+              </p>
+            </CardContent>
+          </Card>
+
+          {/* TITIK KOORDINAT */}
+          <Card className="rounded-3xl md:rounded-[2.5rem] border border-slate-100 bg-white p-6 md:p-8 shadow-sm space-y-5">
+            <div className="flex items-center gap-3">
+              <div className="p-3 bg-secondary/20 text-primary rounded-2xl shrink-0">
+                <Compass className="h-5 w-5" />
+              </div>
+              <div>
+                <h4 className="text-base font-black text-slate-900 uppercase tracking-tight">Titik Koordinat Balai Desa</h4>
+                <p className="text-xs text-slate-500 font-medium">Data pemetaan digital terverifikasi</p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-3 font-mono text-xs">
+              <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-100 space-y-1">
+                <span className="text-[9px] font-sans font-black text-slate-400 uppercase block tracking-wider">Latitude</span>
+                <span className="font-bold text-slate-800 text-sm block">-7.5110</span>
+                <span className="text-[10px] text-primary font-semibold block">7°30&apos;40&quot; LS</span>
+              </div>
+              <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-100 space-y-1">
+                <span className="text-[9px] font-sans font-black text-slate-400 uppercase block tracking-wider">Longitude</span>
+                <span className="font-bold text-slate-800 text-sm block">108.8469</span>
+                <span className="text-[10px] text-primary font-semibold block">108°50&apos;49&quot; BT</span>
+              </div>
+            </div>
+          </Card>
+        </div>
       </div>
     </div>
   );
 }
 
 function WilayahTab() {
-  const dusuns = [
-    { name: 'DUSUN I', rw: 2, rt: 8, color: 'bg-primary' },
-    { name: 'DUSUN II', rw: 3, rt: 12, color: 'bg-secondary' },
-    { name: 'DUSUN III', rw: 2, rt: 10, color: 'bg-accent' },
-    { name: 'DUSUN IV', rw: 3, rt: 11, color: 'bg-slate-900' },
+  const dusunList = [
+    {
+      name: 'DUSUN MARGAMULYA',
+      rw: 'RW 01',
+      rtCount: 10,
+      rts: ['RT 01', 'RT 02', 'RT 03', 'RT 04', 'RT 05', 'RT 06', 'RT 07', 'RT 08', 'RT 09', 'RT 10'],
+      color: 'bg-blue-600',
+      badgeBg: 'bg-blue-50 text-blue-700'
+    },
+    {
+      name: 'DUSUN BULUWANGI',
+      rw: 'RW 02',
+      rtCount: 7,
+      rts: ['RT 01', 'RT 02', 'RT 03', 'RT 04', 'RT 05', 'RT 06', 'RT 07'],
+      color: 'bg-indigo-600',
+      badgeBg: 'bg-indigo-50 text-indigo-700'
+    },
+    {
+      name: 'DUSUN GANDRUNGMANGUN',
+      rw: 'RW 03',
+      rtCount: 6,
+      rts: ['RT 01', 'RT 02', 'RT 03', 'RT 04', 'RT 05', 'RT 06'],
+      color: 'bg-amber-500',
+      badgeBg: 'bg-amber-50 text-amber-700'
+    },
+    {
+      name: 'DUSUN KEBON ARUM',
+      rw: 'RW 04',
+      rtCount: 5,
+      rts: ['RT 01', 'RT 02', 'RT 03', 'RT 04', 'RT 05'],
+      color: 'bg-emerald-600',
+      badgeBg: 'bg-emerald-50 text-emerald-700'
+    },
+    {
+      name: 'DUSUN KEBANARAN',
+      rw: 'RW 05',
+      rtCount: 5,
+      rts: ['RT 01', 'RT 02', 'RT 03', 'RT 04', 'RT 05'],
+      color: 'bg-rose-600',
+      badgeBg: 'bg-rose-50 text-rose-700'
+    },
+    {
+      name: 'DUSUN KEDUNGREJA',
+      rw: 'RW 06',
+      rtCount: 5,
+      rts: ['RT 01', 'RT 02', 'RT 03', 'RT 04', 'RT 05'],
+      color: 'bg-purple-600',
+      badgeBg: 'bg-purple-50 text-purple-700'
+    },
+    {
+      name: 'DUSUN CIAWITALI',
+      rw: 'RW 07',
+      rtCount: 5,
+      rts: ['RT 01', 'RT 02', 'RT 03', 'RT 04', 'RT 05'],
+      color: 'bg-cyan-600',
+      badgeBg: 'bg-cyan-50 text-cyan-700'
+    },
   ];
+
+  const totalRt = dusunList.reduce((acc, curr) => acc + curr.rtCount, 0);
 
   return (
     <div className="space-y-12">
-      <div className="max-w-2xl space-y-4">
-        <h2 className="text-4xl font-black text-slate-900 uppercase font-display italic">Data <span className="text-primary not-italic">Wilayah</span></h2>
-        <p className="text-slate-500 font-medium leading-relaxed italic">Distribusi pembagian wilayah administratif Desa Pangawaren yang terdiri dari 4 Dusun utama.</p>
+      {/* HEADER & SUMMARY CARDS */}
+      <div className="space-y-6">
+        <div className="max-w-3xl space-y-3">
+          <Badge className="bg-blue-50 text-blue-700 font-black uppercase text-[10px] tracking-widest px-4 py-1.5 border-none shadow-sm">
+            Struktur Administratif
+          </Badge>
+          <h2 className="text-3xl md:text-5xl font-black text-slate-900 uppercase font-display italic tracking-tight">
+            Data <span className="text-primary not-italic">Wilayah Desa</span>
+          </h2>
+          <p className="text-slate-600 font-medium text-base md:text-lg leading-relaxed">
+            Distribusi pembagian wilayah administratif Desa Gandrungmangu mencakup 7 Dusun, 7 Rukun Warga (RW), dan 43 Rukun Tetangga (RT).
+          </p>
+        </div>
+
+        {/* SUMMARY NUMBERS */}
+        <div className="grid grid-cols-3 gap-3 md:gap-6">
+          <div className="bg-white p-5 md:p-8 rounded-3xl border border-slate-100 shadow-sm space-y-1 text-center md:text-left">
+            <p className="text-3xl md:text-5xl font-black text-primary tracking-tight font-display">{dusunList.length}</p>
+            <p className="text-[10px] md:text-xs font-black uppercase tracking-wider text-slate-400">Total Dusun</p>
+          </div>
+          <div className="bg-white p-5 md:p-8 rounded-3xl border border-slate-100 shadow-sm space-y-1 text-center md:text-left">
+            <p className="text-3xl md:text-5xl font-black text-secondary tracking-tight font-display">7</p>
+            <p className="text-[10px] md:text-xs font-black uppercase tracking-wider text-slate-400">Total RW</p>
+          </div>
+          <div className="bg-white p-5 md:p-8 rounded-3xl border border-slate-100 shadow-sm space-y-1 text-center md:text-left">
+            <p className="text-3xl md:text-5xl font-black text-slate-900 tracking-tight font-display">{totalRt}</p>
+            <p className="text-[10px] md:text-xs font-black uppercase tracking-wider text-slate-400">Total RT</p>
+          </div>
+        </div>
       </div>
 
-      <div className="grid sm:grid-cols-2 gap-6 md:grid-cols-2 md:gap-8">
-        {dusuns.map((dusun, i) => (
-          <Card key={i} className="rounded-3xl md:rounded-[3rem] border-none shadow-sm hover:shadow-2xl transition-all duration-500 bg-white overflow-hidden group">
-            <div className={cn("h-3 w-full", dusun.color)} />
-            <CardContent className="p-6 md:p-10 space-y-6 md:space-y-8">
-              <div className="flex justify-between items-center">
-                <h3 className="text-2xl font-black text-slate-800 tracking-tighter">{dusun.name}</h3>
-                <div className="p-3 bg-slate-50 rounded-2xl group-hover:bg-primary group-hover:text-white transition-all">
-                  <Milestone className="h-6 w-6" />
+      {/* DUSUN CARDS LIST */}
+      <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-6 md:gap-8">
+        {dusunList.map((dusun, i) => (
+          <Card key={i} className="rounded-3xl md:rounded-[2.5rem] border-none shadow-sm hover:shadow-xl transition-all duration-300 bg-white overflow-hidden group flex flex-col justify-between">
+            <div>
+              <div className={cn("h-3 w-full", dusun.color)} />
+              <CardContent className="p-6 md:p-8 space-y-6">
+                <div className="flex justify-between items-start gap-4">
+                  <div>
+                    <Badge className={cn("font-black uppercase text-[10px] tracking-widest px-3 py-1 border-none mb-2", dusun.badgeBg)}>
+                      {dusun.rw}
+                    </Badge>
+                    <h3 className="text-xl md:text-2xl font-black text-slate-900 tracking-tight font-display">{dusun.name}</h3>
+                  </div>
+                  <div className="p-3 bg-slate-50 text-slate-700 rounded-2xl group-hover:bg-primary group-hover:text-white transition-colors">
+                    <Milestone className="h-6 w-6" />
+                  </div>
                 </div>
-              </div>
 
-              <div className="grid grid-cols-2 gap-6">
-                <div className="space-y-1">
-                  <p className="text-5xl font-black text-slate-900 tracking-tighter">{dusun.rw}</p>
-                  <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Jumlah RW</p>
+                <div className="space-y-3">
+                  <div className="flex justify-between items-center text-xs font-bold text-slate-500 uppercase tracking-wider">
+                    <span>Daftar Rukun Tetangga (RT)</span>
+                    <span className="text-primary font-black">{dusun.rtCount} RT</span>
+                  </div>
+                  <div className="flex flex-wrap gap-2 pt-1">
+                    {dusun.rts.map((rt) => (
+                      <span key={rt} className="px-3 py-1.5 rounded-xl bg-slate-100 text-slate-700 font-mono text-xs font-semibold">
+                        {rt}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-                <div className="space-y-1">
-                  <p className="text-5xl font-black text-slate-900 tracking-tighter">{dusun.rt}</p>
-                  <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Jumlah RT</p>
-                </div>
-              </div>
-
-              <div className="pt-6 border-t border-slate-50 flex items-center justify-between text-primary font-black uppercase text-[10px] tracking-widest group-hover:translate-x-2 transition-transform">
-                <span>Lihat Detail Wilayah</span>
-                <ChevronRight className="h-4 w-4" />
-              </div>
-            </CardContent>
+              </CardContent>
+            </div>
           </Card>
         ))}
       </div>
@@ -563,7 +695,7 @@ function WilayahTab() {
 
 function PotensiTab() {
   const potentials = [
-    { title: 'Pertanian Utama', desc: 'Lahan sawah seluas 500+ hektar yang menghasilkan padi kualitas premium serta komoditas palawija unggulan.', icon: Zap, color: 'text-emerald-600', bg: 'bg-emerald-50' },
+    { title: 'Pertanian Utama', desc: 'Lahan sawah seluas 500+ hektar yang menghasilkan padi kualitas premium serta komoditas palawija unggulan.', icon: Zap, color: 'text-blue-600', bg: 'bg-blue-50' },
     { title: 'UMKM Mandiri', desc: 'Produk olahan makanan lokal seperti keripik dan kerajinan tangan hasil karya ibu-ibu PKK desa.', icon: Landmark, color: 'text-amber-600', bg: 'bg-amber-50' },
     { title: 'Wisata Alam', desc: 'Potensi wisata agro dan river tubing yang sedang dikembangkan untuk menarik minat wisatawan daerah.', icon: MapIcon, color: 'text-blue-600', bg: 'bg-blue-50' },
     { title: 'Budaya Lokal', desc: 'Tradisi gotong royong yang kuat serta pelestarian seni banyumasan yang tetap eksis di tengah warga.', icon: Users, color: 'text-rose-600', bg: 'bg-rose-50' },
@@ -573,7 +705,7 @@ function PotensiTab() {
     <div className="space-y-16">
       <div className="text-center space-y-4 max-w-3xl mx-auto">
         <h2 className="text-4xl md:text-5xl font-black text-slate-900 uppercase font-display italic">Potensi <span className="text-primary not-italic">Unggulan</span></h2>
-        <p className="text-slate-500 font-bold uppercase text-[10px] tracking-[0.4em]">Aset Ekonomi & Kekayaan Budaya Pangawaren</p>
+        <p className="text-slate-500 font-bold uppercase text-[10px] tracking-[0.4em]">Aset Ekonomi & Kekayaan Budaya Gandrungmangu</p>
       </div>
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
@@ -623,7 +755,7 @@ function GaleriTab({ youtubeEmbedUrl, newsData, isLoadingNews }: { youtubeEmbedU
           {youtubeEmbedUrl ? (
             <iframe
               src={youtubeEmbedUrl}
-              title="Profil Desa Pangawaren"
+              title="Profil Desa Gandrungmangu"
               className="w-full h-full opacity-80 group-hover:opacity-100 transition-opacity"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
@@ -641,14 +773,14 @@ function GaleriTab({ youtubeEmbedUrl, newsData, isLoadingNews }: { youtubeEmbedU
           )}
         </Card>
       </section>
- 
+
       {/* Photo Gallery Grid - Dokumentasi Kegiatan dari Berita */}
       <section className="space-y-10">
         <div className="flex items-center gap-4">
           <div className="p-3 bg-primary text-white rounded-2xl"><ImageIcon className="h-6 w-6" /></div>
           <h3 className="text-xl md:text-2xl font-black uppercase tracking-tight text-slate-800">Dokumentasi Kegiatan</h3>
         </div>
- 
+
         {isLoadingNews ? (
           <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 md:gap-6 space-y-4 md:space-y-6">
             {Array.from({ length: 6 }).map((_, i) => (

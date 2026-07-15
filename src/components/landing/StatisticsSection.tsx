@@ -8,7 +8,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { StatisticsCharts } from './StatisticsCharts';
 
 const metrics = [
-  { label: 'Jumlah Penduduk', icon: Users, accent: 'text-emerald-600', bg: 'bg-emerald-50' },
+  { label: 'Jumlah Penduduk', icon: Users, accent: 'text-blue-600', bg: 'bg-blue-50' },
   { label: 'Jumlah KK', icon: Home, accent: 'text-amber-600', bg: 'bg-amber-50' },
   { label: 'RT', icon: BadgeCheck, accent: 'text-cyan-600', bg: 'bg-cyan-50' },
   { label: 'RW', icon: BarChart3, accent: 'text-violet-600', bg: 'bg-violet-50' },
@@ -62,15 +62,15 @@ export function StatisticsSection() {
           className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between"
         >
           <div className="max-w-2xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-emerald-700">Statistik Desa</p>
+            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-blue-700">Statistik Desa</p>
             <h2 className="mt-3 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
-              Data terbaru mengenai kondisi Desa Pangawaren.
+              Data terbaru mengenai kondisi Desa Gandrungmangu.
             </h2>
             <p className="mt-4 text-lg leading-8 text-slate-600">
               Informasi terbuka yang membantu masyarakat memahami kondisi wilayah dan perkembangan pelayanan desa.
             </p>
           </div>
-          <a href="/statistik" className="inline-flex items-center gap-2 text-sm font-semibold text-emerald-700">
+          <a href="/statistik" className="inline-flex items-center gap-2 text-sm font-semibold text-blue-700">
             Lihat dashboard lengkap
             <ArrowUpRight className="h-4 w-4" />
           </a>

@@ -13,23 +13,23 @@ export function CtaSection() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.35 }}
-        className="overflow-hidden rounded-[2.25rem] border border-emerald-200 bg-gradient-to-br from-emerald-800 via-emerald-700 to-emerald-900 p-8 text-white shadow-[0_30px_80px_rgba(6,95,70,0.25)] sm:p-12"
+        className="overflow-hidden rounded-[2.25rem] border border-blue-900 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-950 p-8 text-white shadow-[0_30px_80px_rgba(30,58,138,0.25)] sm:p-12"
       >
         <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
           <div>
-            <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold uppercase tracking-[0.25em] text-emerald-100">
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold uppercase tracking-[0.25em] text-blue-100">
               <Sparkles className="h-4 w-4" />
               Layanan Desa Modern
             </div>
             <h2 className="mt-6 text-3xl font-semibold tracking-tight sm:text-4xl">
               Butuh pelayanan desa?
             </h2>
-            <p className="mt-4 max-w-2xl text-lg leading-8 text-emerald-50/90">
-              Ajukan seluruh pelayanan administrasi desa secara online melalui Portal Desa Pangawaren, cepat, aman, dan bisa diakses dari mana saja.
+            <p className="mt-4 max-w-2xl text-lg leading-8 text-blue-50/90">
+              Ajukan seluruh pelayanan administrasi desa secara online melalui Portal Desa Gandrungmangu, cepat, aman, dan bisa diakses dari mana saja.
             </p>
           </div>
           <div className="rounded-[1.75rem] border border-white/15 bg-white/10 p-6 backdrop-blur-md">
-            <div className="flex items-center gap-3 text-emerald-50">
+            <div className="flex items-center gap-3 text-blue-50">
               <ShieldCheck className="h-6 w-6 text-amber-300" />
               <p className="text-lg font-semibold">Layanan resmi, transparan, dan terpercaya</p>
             </div>

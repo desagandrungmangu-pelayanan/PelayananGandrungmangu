@@ -13,16 +13,16 @@
     --popover: 0 0% 100%;
     --popover-foreground: 220 25% 15%;
 
-    --primary: 152 64% 22%;
+    --primary: 222 47% 11%;
     --primary-foreground: 0 0% 98%;
 
     --secondary: 45 95% 54%;
-    --secondary-foreground: 152 64% 18%;
+    --secondary-foreground: 222 47% 11%;
 
     --muted: 214 20% 94%;
     --muted-foreground: 215 16% 47%;
 
-    --accent: 152 40% 44%;
+    --accent: 217 91% 60%;
     --accent-foreground: 0 0% 98%;
 
     --destructive: 0 84% 60%;
@@ -30,17 +30,17 @@
 
     --border: 214 20% 88%;
     --input: 214 20% 88%;
-    --ring: 152 64% 22%;
+    --ring: 222 47% 20%;
 
     --radius: 1.25rem;
 
-    --sidebar-background: 152 64% 16%;
+    --sidebar-background: 222 47% 11%;
     --sidebar-foreground: 210 40% 97%;
     --sidebar-primary: 45 95% 54%;
-    --sidebar-primary-foreground: 152 64% 16%;
-    --sidebar-accent: 152 40% 24%;
+    --sidebar-primary-foreground: 222 47% 11%;
+    --sidebar-accent: 224 40% 24%;
     --sidebar-accent-foreground: 45 95% 54%;
-    --sidebar-border: 152 40% 24%;
+    --sidebar-border: 224 40% 24%;
     --sidebar-ring: 45 95% 54%;
   }
 }
@@ -85,7 +85,7 @@ div[class*="shadow"][class*="bg-card"][class*="rounded-"],
 .bg-card,
 .border-slate-100,
 .border-slate-200 {
-  border: 1px solid rgba(16, 185, 129, 0.18) !important;
+  border: 1px solid rgba(30, 58, 138, 0.18) !important;
   transition: all 0.3s ease-in-out;
 }
 
@@ -95,7 +95,7 @@ div[class*="shadow"][class*="bg-card"][class*="rounded-"]:hover,
 .bg-card:hover,
 .border-slate-100:hover,
 .border-slate-200:hover {
-  border-color: rgba(16, 185, 129, 0.45) !important;
+  border-color: rgba(30, 58, 138, 0.45) !important;
 }
 
 @keyframes marquee {

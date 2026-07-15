@@ -26,8 +26,8 @@ export function VillageMap() {
   const [isClient, setIsClient] = useState(false);
   const [leafletInstance, setLeafletInstance] = useState<any>(null);
 
-  // Koordinat Desa Pangawaren, Karangpucung, Cilacap
-  const center: [number, number] = [-7.3889, 108.8622];
+  // Koordinat Desa Gandrungmangu, Gandrungmangu, Cilacap
+  const center: [number, number] = [-7.5110, 108.8469];
   const zoom = 15;
 
   useEffect(() => {
@@ -67,9 +67,9 @@ export function VillageMap() {
 
   return (
     <div className="w-full h-full rounded-[3rem] overflow-hidden">
-      <MapContainer 
-        center={center} 
-        zoom={zoom} 
+      <MapContainer
+        center={center}
+        zoom={zoom}
         style={{ height: '100%', width: '100%' }}
         className="z-0"
       >
@@ -81,8 +81,8 @@ export function VillageMap() {
         <Marker position={center}>
           <Popup>
             <div className="text-center text-sm font-semibold">
-              <p className="font-black text-slate-900">Desa Pangawaren</p>
-              <p className="text-slate-600 text-xs">Karangpucung, Cilacap</p>
+              <p className="font-black text-slate-900">Desa Gandrungmangu</p>
+              <p className="text-slate-600 text-xs">Gandrungmangu, Cilacap</p>
               <p className="text-slate-500 text-xs mt-1">
                 Lat: {center[0].toFixed(4)}, Lon: {center[1].toFixed(4)}
               </p>

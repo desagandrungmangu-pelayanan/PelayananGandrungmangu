@@ -451,7 +451,7 @@ export function SubmissionList() {
                 <RadioGroupItem value="kades" id="signer-kades" />
                 <Label htmlFor="signer-kades" className="flex-1 cursor-pointer space-y-1">
                   <p className="font-black uppercase tracking-tight text-slate-800">Kepala Desa</p>
-                  <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Suhud</p>
+                  <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Nuryani</p>
                 </Label>
               </div>
 

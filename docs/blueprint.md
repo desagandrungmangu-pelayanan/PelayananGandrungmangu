@@ -1,4 +1,4 @@
-# **App Name**: Pangawaren Digital
+# **App Name**: Gandrungmangu Digital
 
 ## Core Features:
 

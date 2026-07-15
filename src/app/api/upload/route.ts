@@ -13,7 +13,7 @@ export async function POST(req: Request) {
   try {
     const formData = await req.formData();
     const file = formData.get('file') as File;
-    
+
     if (!file) {
       return NextResponse.json({ error: 'Tidak ada berkas yang diunggah' }, { status: 400 });
     }
@@ -24,10 +24,10 @@ export async function POST(req: Request) {
 
     // Convert buffer to Base64 string for Cloudinary upload
     const base64Image = `data:${file.type};base64,${buffer.toString('base64')}`;
-    
-    // Upload to Cloudinary under the 'pelayanan-desa' folder
+
+    // Upload to Cloudinary under the 'berita_desa' folder
     const response = await cloudinary.uploader.upload(base64Image, {
-      folder: 'pelayanan-desa',
+      folder: 'berita_desa',
     });
 
     return NextResponse.json({ url: response.secure_url });

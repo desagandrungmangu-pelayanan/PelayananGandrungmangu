@@ -7,12 +7,12 @@ import { useToast } from '@/hooks/use-toast';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { 
-  Landmark, 
-  PlusCircle, 
-  Trash2, 
-  Edit, 
-  Loader2, 
+import {
+  Landmark,
+  PlusCircle,
+  Trash2,
+  Edit,
+  Loader2,
   ImageIcon,
   Compass,
   FileText
@@ -23,7 +23,7 @@ import { PotensiForm, POTENSI_CATEGORIES } from './_components/potensi-form';
 export default function AdminPotensiDesa() {
   const { toast } = useToast();
   const firestore = useFirestore();
-  
+
   const [formOpen, setFormOpen] = useState(false);
   const [editingPotensi, setEditingPotensi] = useState<PotensiDesa | null>(null);
 
@@ -79,10 +79,10 @@ export default function AdminPotensiDesa() {
             <span>Kelola Potensi Desa</span>
           </h1>
           <p className="text-[11px] font-bold text-slate-400 uppercase tracking-widest mt-1">
-            Manajemen informasi potensi unggulan, industri kreatif, pariwisata, dan BUMDes Pangawaren
+            Manajemen informasi potensi unggulan, industri kreatif, pariwisata, dan BUMDes Gandrungmangu
           </p>
         </div>
-        <Button 
+        <Button
           onClick={handleCreate}
           className="rounded-full h-11 bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs uppercase tracking-wider px-6 shrink-0 shadow-lg shadow-emerald-700/10 flex items-center gap-2"
         >
@@ -105,7 +105,7 @@ export default function AdminPotensiDesa() {
             </div>
             <h3 className="text-slate-700 font-extrabold text-sm uppercase tracking-wider">Belum Ada Data Potensi</h3>
             <p className="text-xs text-slate-400 max-w-md mx-auto leading-relaxed">
-              Data potensi desa belum ditambahkan. Klik tombol "Tambah Potensi" di atas untuk menambahkan potensi unggulan Desa Pangawaren.
+              Data potensi desa belum ditambahkan. Klik tombol "Tambah Potensi" di atas untuk menambahkan potensi unggulan Desa Gandrungmangu.
             </p>
           </div>
         </Card>
@@ -116,9 +116,9 @@ export default function AdminPotensiDesa() {
               {/* Thumbnail Slider Preview */}
               <div className="relative aspect-[16/9] w-full bg-slate-50 border-b overflow-hidden">
                 {item.imageUrls && item.imageUrls.length > 0 ? (
-                  <img 
-                    src={item.imageUrls[0]} 
-                    alt={item.title} 
+                  <img
+                    src={item.imageUrls[0]}
+                    alt={item.title}
                     className="w-full h-full object-cover transition-transform duration-750 group-hover:scale-105"
                   />
                 ) : (
@@ -126,7 +126,7 @@ export default function AdminPotensiDesa() {
                     <ImageIcon className="h-10 w-10 text-slate-300" />
                   </div>
                 )}
-                
+
                 {/* Count badge for photos */}
                 {item.imageUrls && item.imageUrls.length > 1 && (
                   <div className="absolute top-4 right-4 bg-slate-900/80 backdrop-blur-sm text-white px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-wider">
@@ -188,10 +188,10 @@ export default function AdminPotensiDesa() {
       )}
 
       {/* Form Dialog */}
-      <PotensiForm 
-        open={formOpen} 
-        onOpenChange={setFormOpen} 
-        potensi={editingPotensi} 
+      <PotensiForm
+        open={formOpen}
+        onOpenChange={setFormOpen}
+        potensi={editingPotensi}
       />
     </div>
   );

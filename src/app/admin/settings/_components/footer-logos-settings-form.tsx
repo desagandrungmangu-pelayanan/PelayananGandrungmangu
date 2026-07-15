@@ -13,7 +13,7 @@ import { FooterLogosInfo } from '@/lib/types';
 import { Skeleton } from '@/components/ui/skeleton';
 import Image from 'next/image';
 
-const CLOUD_NAME = 'dgsxujjb1';
+const CLOUD_NAME = 'dbkufesrp';
 const UPLOAD_PRESET = 'webdesa';
 
 const defaultFooterLogos: FooterLogosInfo = {

@@ -29,9 +29,9 @@ export default function DashboardPage() {
           <h1 className="text-3xl md:text-4xl font-black tracking-tight text-slate-900">
             {greeting}, Warga 👋
           </h1>
-          <p className="text-sm text-slate-500 font-medium">Panel akses layanan mandiri Desa Pangawaren.</p>
+          <p className="text-sm text-slate-500 font-medium">Panel akses layanan mandiri Desa Gandrungmangu.</p>
         </div>
-        
+
         <div className="hidden md:flex items-center gap-3 bg-white p-2 rounded-2xl border shadow-sm">
           <div className="p-3 bg-slate-100 rounded-xl">
             <Zap className="h-5 w-5 text-slate-600" />
@@ -46,7 +46,7 @@ export default function DashboardPage() {
       {/* QUICK ACCESS CARDS - MOBILE ONLY */}
       <section className="grid grid-cols-1 gap-4 md:hidden">
         <h2 className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">Akses Cepat Layanan</h2>
-        
+
         <Link href="/layanan-surat">
           <Card className="rounded-3xl border-none shadow-sm bg-white overflow-hidden active:scale-95 transition-all">
             <CardContent className="p-5 flex items-center justify-between">

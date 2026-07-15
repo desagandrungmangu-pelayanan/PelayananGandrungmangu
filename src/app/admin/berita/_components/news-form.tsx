@@ -21,8 +21,8 @@ interface NewsFormProps {
   initialData?: News | null;
 }
 
-const CLOUD_NAME = 'dgsxujjb1';
-const UPLOAD_PRESET = 'webdesa'; 
+const CLOUD_NAME = 'dbkufesrp';
+const UPLOAD_PRESET = 'webdesa';
 
 export function NewsForm({ initialData }: NewsFormProps) {
   const [formData, setFormData] = useState({
@@ -302,9 +302,9 @@ export function NewsForm({ initialData }: NewsFormProps) {
   };
 
   const getOptimizedImageUrl = (url: string) => {
-      if (!url.includes('res.cloudinary.com')) return url;
-      const transformation = 'w_800,q_auto,f_auto';
-      return url.replace('/image/upload/', `/image/upload/${transformation}/`);
+    if (!url.includes('res.cloudinary.com')) return url;
+    const transformation = 'w_800,q_auto,f_auto';
+    return url.replace('/image/upload/', `/image/upload/${transformation}/`);
   };
 
   return (
@@ -392,9 +392,9 @@ export function NewsForm({ initialData }: NewsFormProps) {
           </div>
 
           <div className="flex items-center space-x-2 bg-amber-50 p-4 rounded-xl border border-amber-100">
-            <Checkbox 
-              id="isHeadline" 
-              checked={formData.isHeadline} 
+            <Checkbox
+              id="isHeadline"
+              checked={formData.isHeadline}
               onCheckedChange={(checked) => setFormData(p => ({ ...p, isHeadline: !!checked }))}
             />
             <Label htmlFor="isHeadline" className="flex items-center gap-2 cursor-pointer font-bold text-amber-900">
@@ -405,33 +405,33 @@ export function NewsForm({ initialData }: NewsFormProps) {
 
           <div className="space-y-2">
             <Label htmlFor="title">Judul Kegiatan (Maskot)</Label>
-            <Input 
-              id="title" 
-              value={formData.title ?? ''} 
-              onChange={e => setFormData(p => ({ ...p, title: e.target.value }))} 
-              placeholder="Contoh: Musyawarah Desa Pangawaren 2026"
-              required 
+            <Input
+              id="title"
+              value={formData.title ?? ''}
+              onChange={e => setFormData(p => ({ ...p, title: e.target.value }))}
+              placeholder="Contoh: Musyawarah Desa Gandrungmangu 2026"
+              required
             />
           </div>
 
           <div className="space-y-2">
             <Label htmlFor="subtitle">Sub Judul</Label>
-            <Input 
-              id="subtitle" 
-              value={formData.subtitle ?? ''} 
-              onChange={e => setFormData(p => ({ ...p, subtitle: e.target.value }))} 
+            <Input
+              id="subtitle"
+              value={formData.subtitle ?? ''}
+              onChange={e => setFormData(p => ({ ...p, subtitle: e.target.value }))}
               placeholder="Ringkasan singkat berita..."
             />
           </div>
 
           <div className="space-y-2">
             <Label htmlFor="date">Tanggal Berita</Label>
-            <Input 
-              id="date" 
-              value={formData.date ?? ''} 
-              onChange={e => setFormData(p => ({ ...p, date: e.target.value }))} 
+            <Input
+              id="date"
+              value={formData.date ?? ''}
+              onChange={e => setFormData(p => ({ ...p, date: e.target.value }))}
               placeholder="Contoh: Jumat, 24 Apr 2026"
-              required 
+              required
             />
           </div>
 
@@ -450,10 +450,10 @@ export function NewsForm({ initialData }: NewsFormProps) {
                 Buat dengan AI
               </Button>
             </div>
-            <Textarea 
-              id="content" 
-              value={formData.content ?? ''} 
-              onChange={e => setFormData(p => ({ ...p, content: e.target.value }))} 
+            <Textarea
+              id="content"
+              value={formData.content ?? ''}
+              onChange={e => setFormData(p => ({ ...p, content: e.target.value }))}
               placeholder="Tulis narasi lengkap berita di sini..."
               rows={15}
             />
@@ -461,12 +461,12 @@ export function NewsForm({ initialData }: NewsFormProps) {
 
           <div className="space-y-2">
             <Label htmlFor="author">Pembuat Berita</Label>
-            <Input 
-              id="author" 
-              value={formData.author ?? ''} 
-              onChange={e => setFormData(p => ({ ...p, author: e.target.value }))} 
+            <Input
+              id="author"
+              value={formData.author ?? ''}
+              onChange={e => setFormData(p => ({ ...p, author: e.target.value }))}
               placeholder="Nama Penulis / Tim Media Desa"
-              required 
+              required
             />
           </div>
 

@@ -31,15 +31,15 @@ type ContactItem = {
 const contacts: ContactItem[] = [
   {
     label: 'Kepala Desa',
-    number: '082324502378',
+    number: '-',
     icon: Landmark,
-    color: 'text-emerald-600',
-    bgColor: 'bg-emerald-50',
+    color: 'text-blue-700',
+    bgColor: 'bg-blue-50',
     category: 'pemerintah',
   },
   {
     label: 'Babinsa',
-    number: '081282148178',
+    number: '-',
     icon: Shield,
     color: 'text-blue-600',
     bgColor: 'bg-blue-50',
@@ -47,7 +47,7 @@ const contacts: ContactItem[] = [
   },
   {
     label: 'Bhabinkamitibmas',
-    number: '085229658988',
+    number: '-',
     icon: Shield,
     color: 'text-indigo-600',
     bgColor: 'bg-indigo-50',
@@ -55,31 +55,31 @@ const contacts: ContactItem[] = [
   },
   {
     label: 'Bidan Desa',
-    number: '081226370112',
+    number: '-',
     icon: Heart,
     color: 'text-rose-600',
     bgColor: 'bg-rose-50',
     category: 'kesehatan',
   },
   {
-    label: 'Camat Karangpucung',
-    number: '08122727683',
+    label: 'Camat Gandrungmangu',
+    number: '-',
     icon: Building2,
     color: 'text-amber-600',
     bgColor: 'bg-amber-50',
     category: 'pemerintah',
   },
   {
-    label: 'Koramil Karangpucung',
-    number: '085229658988',
+    label: 'Koramil Gandrungmangu',
+    number: '-',
     icon: Shield,
     color: 'text-sky-600',
     bgColor: 'bg-sky-50',
     category: 'keamanan',
   },
   {
-    label: 'Polsek Karangpucung',
-    number: '083867770110',
+    label: 'Polsek Gandrungmangu',
+    number: '-',
     icon: Siren,
     color: 'text-blue-700',
     bgColor: 'bg-blue-50',
@@ -87,31 +87,63 @@ const contacts: ContactItem[] = [
   },
   {
     label: 'Pukesmas Karangapucung',
-    number: '082234577980',
+    number: '-',
     icon: Heart,
     color: 'text-pink-600',
     bgColor: 'bg-pink-50',
     category: 'kesehatan',
   },
   {
-    label: 'Kadus 1',
-    number: '082138337494',
+    label: 'Kadus Margamulya',
+    number: '-',
     icon: Users,
-    color: 'text-teal-600',
-    bgColor: 'bg-teal-50',
+    color: 'text-indigo-600',
+    bgColor: 'bg-indigo-50',
     category: 'wilayah',
   },
   {
-    label: 'Kadus 2',
-    number: '085282256678',
+    label: 'Kadus Buluwangi',
+    number: '-',
     icon: Users,
     color: 'text-cyan-600',
     bgColor: 'bg-cyan-50',
     category: 'wilayah',
   },
   {
-    label: 'Kadus 3',
-    number: '083113339132',
+    label: 'Kadus Gandrungmangun',
+    number: '-',
+    icon: Users,
+    color: 'text-violet-600',
+    bgColor: 'bg-violet-50',
+    category: 'wilayah',
+  },
+  {
+    label: 'Kadus Kebon Arum',
+    number: '-',
+    icon: Users,
+    color: 'text-violet-600',
+    bgColor: 'bg-violet-50',
+    category: 'wilayah',
+  },
+  {
+    label: 'Kadus Kebanaran',
+    number: '-',
+    icon: Users,
+    color: 'text-violet-600',
+    bgColor: 'bg-violet-50',
+    category: 'wilayah',
+  },
+  {
+    label: 'Kadus Kedungreja',
+    number: '-',
+    icon: Users,
+    color: 'text-violet-600',
+    bgColor: 'bg-violet-50',
+    category: 'wilayah',
+  },
+  {
+    label: 'Kadus Ciawitali',
+    number: '-',
     icon: Users,
     color: 'text-violet-600',
     bgColor: 'bg-violet-50',
@@ -133,7 +165,7 @@ const formatPhoneDisplay = (number: string) => {
 };
 
 const categoryLabels: Record<string, { label: string; icon: React.ElementType; color: string; border: string }> = {
-  pemerintah: { label: 'Pemerintahan', icon: Landmark, color: 'text-emerald-700 bg-emerald-50', border: 'border-emerald-200' },
+  pemerintah: { label: 'Pemerintahan', icon: Landmark, color: 'text-blue-900 bg-blue-50', border: 'border-blue-200' },
   keamanan: { label: 'Keamanan & Ketertiban', icon: Shield, color: 'text-blue-700 bg-blue-50', border: 'border-blue-200' },
   kesehatan: { label: 'Kesehatan', icon: Heart, color: 'text-rose-700 bg-rose-50', border: 'border-rose-200' },
   wilayah: { label: 'Kepala Dusun', icon: Users, color: 'text-violet-700 bg-violet-50', border: 'border-violet-200' },
@@ -190,17 +222,17 @@ export default function NomorPentingPage() {
                   </div>
                 </div>
                 <h2 className="text-xl md:text-2xl font-black uppercase tracking-tight text-slate-900 font-display">
-                  Pemerintah Desa Pangawaren
+                  Pemerintah Desa Gandrungmangu
                 </h2>
                 <p className="text-sm md:text-base font-bold uppercase tracking-widest text-slate-500">
-                  Kecamatan Karangpucung
+                  Kecamatan Gandrungmangu
                 </p>
                 <p className="text-sm md:text-base font-bold uppercase tracking-widest text-slate-500">
                   Kabupaten Cilacap
                 </p>
                 <div className="flex items-center justify-center gap-2 text-slate-400 text-xs md:text-sm font-medium pt-2">
                   <MapPin className="h-3.5 w-3.5 text-primary/60" />
-                  <span>Jl. Desa Pangawaren No. 1 Karangpucung Cilacap Kode Pos 53255</span>
+                  <span>Jl. Desa Gandrungmangu No. 1 Gandrungmangu Cilacap Kode Pos 53255</span>
                 </div>
               </div>
 
@@ -318,12 +350,12 @@ export default function NomorPentingPage() {
                   Nomor Pelayanan
                 </Badge>
                 <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tight font-display italic">
-                  Nomor Pelayanan Desa Pangawaren
+                  Nomor Pelayanan Desa Gandrungmangu
                 </h3>
               </div>
 
               <a
-                href="tel:085111318412"
+                href="tel:082225483566"
                 className="group inline-block"
               >
                 <div className="relative">
@@ -337,7 +369,7 @@ export default function NomorPentingPage() {
               </a>
 
               <p className="text-sm text-white/60 font-semibold max-w-md mx-auto">
-                Hubungi nomor di atas untuk informasi pelayanan administrasi Desa Pangawaren.
+                Hubungi nomor di atas untuk informasi pelayanan administrasi Desa Gandrungmangu.
               </p>
             </CardContent>
           </Card>
@@ -349,7 +381,7 @@ export default function NomorPentingPage() {
         <div className="container mx-auto px-4 text-center">
           <Logo />
           <p className="mt-8 text-[10px] font-bold uppercase tracking-widest">
-            © 2026 Pemerintah Desa Pangawaren Digital Portal
+            © 2026 Pemerintah Desa Gandrungmangu Digital Portal
           </p>
         </div>
       </footer>

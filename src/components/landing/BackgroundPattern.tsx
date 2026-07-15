@@ -5,13 +5,13 @@ export function BackgroundPattern() {
     <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
       {/* Ambient Glow Orbs */}
       {/* Orb 1: Near Services Section (Left) */}
-      <div className="absolute top-[600px] -left-[250px] w-[600px] h-[600px] rounded-full bg-emerald-500/10 blur-[130px] pointer-events-none" />
+      <div className="absolute top-[600px] -left-[250px] w-[600px] h-[600px] rounded-full bg-blue-600/10 blur-[130px] pointer-events-none" />
       {/* Orb 2: Near Statistics Section (Right) */}
-      <div className="absolute top-[1700px] -right-[200px] w-[700px] h-[700px] rounded-full bg-teal-400/8 blur-[140px] pointer-events-none" />
+      <div className="absolute top-[1700px] -right-[200px] w-[700px] h-[700px] rounded-full bg-blue-400/8 blur-[140px] pointer-events-none" />
       {/* Orb 3: Near About Section (Left) */}
       <div className="absolute top-[3100px] -left-[200px] w-[600px] h-[600px] rounded-full bg-amber-300/8 blur-[130px] pointer-events-none" />
       {/* Orb 4: Near Announcement Section (Right/Center) */}
-      <div className="absolute top-[4700px] left-[20%] w-[700px] h-[700px] rounded-full bg-emerald-400/8 blur-[150px] pointer-events-none" />
+      <div className="absolute top-[4700px] left-[20%] w-[700px] h-[700px] rounded-full bg-blue-500/8 blur-[150px] pointer-events-none" />
 
       {/* Pattern Block 1: Top (Hero / Services Area) */}
       <div className="absolute top-0 left-0 w-full h-[1800px] overflow-hidden">

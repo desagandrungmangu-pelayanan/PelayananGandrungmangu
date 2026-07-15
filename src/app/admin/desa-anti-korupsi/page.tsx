@@ -5,25 +5,25 @@ import { useFirestore } from '@/firebase';
 import { doc, getDoc, setDoc, updateDoc, deleteDoc, serverTimestamp } from 'firebase/firestore';
 import { useToast } from '@/hooks/use-toast';
 import { antiKorupsiData, AntiKorupsiItem } from '@/lib/desa-anti-korupsi-data';
-import { 
-  Select, 
-  SelectContent, 
-  SelectItem, 
-  SelectTrigger, 
-  SelectValue 
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue
 } from '@/components/ui/select';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
-import { 
-  ShieldCheck, 
-  UploadCloud, 
-  FileText, 
-  Image as ImageIcon, 
-  Trash2, 
-  Loader2, 
+import {
+  ShieldCheck,
+  UploadCloud,
+  FileText,
+  Image as ImageIcon,
+  Trash2,
+  Loader2,
   ExternalLink,
   CheckCircle2
 } from 'lucide-react';
@@ -149,7 +149,7 @@ export default function AdminDesaAntiKorupsi() {
     }
     const item = currentSubMenu.items.find(i => i.id === selectedItemId) || null;
     setCurrentItem(item);
-    
+
     if (item && firestore) {
       fetchItemData(item.id);
     }
@@ -424,7 +424,7 @@ export default function AdminDesaAntiKorupsi() {
 
       const docRef = doc(firestore, 'desaAntiKorupsi', currentItem.id);
       const currentImages = dbData.images || (dbData.imageUrl ? [{ url: dbData.imageUrl, name: dbData.imageName || 'Gambar Dukung' }] : []);
-      
+
       if (newPdfs.length === 0 && currentImages.length === 0) {
         await deleteDoc(docRef);
       } else {
@@ -584,7 +584,7 @@ export default function AdminDesaAntiKorupsi() {
             <span>Kelola Desa Anti Korupsi</span>
           </h1>
           <p className="text-[11px] font-bold text-slate-400 uppercase tracking-widest mt-1">
-            Sistem Unggah Dokumen Pilar Anti Korupsi Desa Pangawaren ke Google Drive
+            Sistem Unggah Dokumen Pilar Anti Korupsi Desa Gandrungmangu ke Google Drive
           </p>
         </div>
       </div>
@@ -622,8 +622,8 @@ export default function AdminDesaAntiKorupsi() {
             {/* Sub Menu Selector */}
             <div className="space-y-2">
               <Label className="text-xs font-bold text-slate-500 uppercase tracking-wider">Sub Menu</Label>
-              <Select 
-                value={selectedSubMenuId} 
+              <Select
+                value={selectedSubMenuId}
                 onValueChange={setSelectedSubMenuId}
                 disabled={!selectedPilarId}
               >
@@ -643,8 +643,8 @@ export default function AdminDesaAntiKorupsi() {
             {/* Item Selector */}
             <div className="space-y-2">
               <Label className="text-xs font-bold text-slate-500 uppercase tracking-wider">Rincian Dokumen</Label>
-              <Select 
-                value={selectedItemId} 
+              <Select
+                value={selectedItemId}
                 onValueChange={setSelectedItemId}
                 disabled={!selectedSubMenuId}
               >
@@ -682,7 +682,7 @@ export default function AdminDesaAntiKorupsi() {
                   </p>
                 )}
               </div>
-              
+
               {/* Target Folder ID Info Badge */}
               <div className="shrink-0">
                 {subFolderMappings[selectedItemId] ? (
@@ -735,9 +735,9 @@ export default function AdminDesaAntiKorupsi() {
                                 <p className="text-xs font-bold text-slate-750 truncate">
                                   {pdf.name || `Dokumen PDF ${idx + 1}`}
                                 </p>
-                                <a 
-                                  href={pdf.url} 
-                                  target="_blank" 
+                                <a
+                                  href={pdf.url}
+                                  target="_blank"
                                   rel="noopener noreferrer"
                                   className="text-[10px] text-emerald-600 font-bold hover:underline inline-flex items-center mt-0.5"
                                 >
@@ -746,9 +746,9 @@ export default function AdminDesaAntiKorupsi() {
                                 </a>
                               </div>
                             </div>
-                            <Button 
-                              onClick={() => handleDeletePdfItem(idx)} 
-                              variant="ghost" 
+                            <Button
+                              onClick={() => handleDeletePdfItem(idx)}
+                              variant="ghost"
                               size="icon"
                               className="h-8 w-8 rounded-full text-red-500 hover:text-red-750 hover:bg-red-50 shrink-0"
                             >
@@ -766,22 +766,20 @@ export default function AdminDesaAntiKorupsi() {
                       <button
                         type="button"
                         onClick={() => setPdfInputMode('upload')}
-                        className={`h-8 rounded-lg text-[10px] font-bold uppercase tracking-wider transition-all ${
-                          pdfInputMode === 'upload'
+                        className={`h-8 rounded-lg text-[10px] font-bold uppercase tracking-wider transition-all ${pdfInputMode === 'upload'
                             ? 'bg-white text-slate-800 shadow-sm'
                             : 'text-slate-500 hover:text-slate-700'
-                        }`}
+                          }`}
                       >
                         Unggah Berkas
                       </button>
                       <button
                         type="button"
                         onClick={() => setPdfInputMode('link')}
-                        className={`h-8 rounded-lg text-[10px] font-bold uppercase tracking-wider transition-all ${
-                          pdfInputMode === 'link'
+                        className={`h-8 rounded-lg text-[10px] font-bold uppercase tracking-wider transition-all ${pdfInputMode === 'link'
                             ? 'bg-white text-slate-800 shadow-sm'
                             : 'text-slate-500 hover:text-slate-700'
-                        }`}
+                          }`}
                       >
                         Tautan Manual
                       </button>
@@ -867,10 +865,10 @@ export default function AdminDesaAntiKorupsi() {
                             <>
                               <Loader2 className="h-3.5 w-3.5 animate-spin mr-1.5" />
                               Menyimpan...
-                          </>
-                        ) : (
-                          "Simpan Tautan PDF"
-                        )}
+                            </>
+                          ) : (
+                            "Simpan Tautan PDF"
+                          )}
                         </Button>
                       </div>
                     )}
@@ -900,9 +898,9 @@ export default function AdminDesaAntiKorupsi() {
                             <div key={idx} className="bg-slate-50 border border-slate-200 rounded-xl p-2.5 relative overflow-hidden flex flex-col justify-between">
                               {embedUrl && (
                                 <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-slate-100 border border-slate-200/60 mb-2">
-                                  <img 
-                                    src={embedUrl} 
-                                    alt={`Dokumentasi ${idx + 1}`} 
+                                  <img
+                                    src={embedUrl}
+                                    alt={`Dokumentasi ${idx + 1}`}
                                     className="h-full w-full object-contain"
                                   />
                                 </div>
@@ -911,9 +909,9 @@ export default function AdminDesaAntiKorupsi() {
                                 <span className="text-[9px] font-bold text-slate-500 truncate block text-[9px] truncate">
                                   {img.name || `Foto ${idx + 1}`}
                                 </span>
-                                <Button 
-                                  onClick={() => handleDeleteImageItem(idx)} 
-                                  variant="ghost" 
+                                <Button
+                                  onClick={() => handleDeleteImageItem(idx)}
+                                  variant="ghost"
                                   size="icon"
                                   className="h-6 w-6 rounded-full text-red-500 hover:text-red-750 hover:bg-red-50 shrink-0"
                                 >
@@ -933,22 +931,20 @@ export default function AdminDesaAntiKorupsi() {
                       <button
                         type="button"
                         onClick={() => setImageInputMode('upload')}
-                        className={`h-8 rounded-lg text-[10px] font-bold uppercase tracking-wider transition-all ${
-                          imageInputMode === 'upload'
+                        className={`h-8 rounded-lg text-[10px] font-bold uppercase tracking-wider transition-all ${imageInputMode === 'upload'
                             ? 'bg-white text-slate-800 shadow-sm'
                             : 'text-slate-500 hover:text-slate-700'
-                        }`}
+                          }`}
                       >
                         Unggah Berkas
                       </button>
                       <button
                         type="button"
                         onClick={() => setImageInputMode('link')}
-                        className={`h-8 rounded-lg text-[10px] font-bold uppercase tracking-wider transition-all ${
-                          imageInputMode === 'link'
+                        className={`h-8 rounded-lg text-[10px] font-bold uppercase tracking-wider transition-all ${imageInputMode === 'link'
                             ? 'bg-white text-slate-800 shadow-sm'
                             : 'text-slate-500 hover:text-slate-700'
-                        }`}
+                          }`}
                       >
                         Tautan Manual
                       </button>

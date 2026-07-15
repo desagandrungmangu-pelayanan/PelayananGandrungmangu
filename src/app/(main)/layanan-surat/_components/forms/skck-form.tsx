@@ -179,7 +179,7 @@ export function SkckForm({ isAdmin = false }: { isAdmin?: boolean }) {
             form.setValue('birthDate', formatDbDateToForm(res.dateOfBirth));
             form.setValue('religion', res.religion);
             form.setValue('job', res.occupation);
-            const fullAddress = `${res.address}, RT ${res.rt} RW ${res.rw}, ${res.kelurahan}Kec. Karangpucung, Kab. Cilacap`.toUpperCase();
+            const fullAddress = `${res.address}, RT ${res.rt} RW ${res.rw}, ${res.kelurahan}Kec. Gandrungmangu, Kab. Cilacap`.toUpperCase();
             form.setValue('address', fullAddress);
             toast({ title: "Data Berhasil Dimuat" });
           }

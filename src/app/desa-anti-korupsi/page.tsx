@@ -57,7 +57,7 @@ export default function DesaAntiKorupsi() {
   const [activeImageIndex, setActiveImageIndex] = useState<number>(0);
   const [activeItemTitle, setActiveItemTitle] = useState<string>('');
   const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
-  
+
   const firestore = useFirestore();
 
   // Load uploaded documents from firestore
@@ -87,22 +87,22 @@ export default function DesaAntiKorupsi() {
     <div className="relative flex min-h-screen flex-col bg-slate-50 text-slate-900 overflow-x-hidden">
       <BackgroundPattern />
       <Header />
-      
+
       <main className="relative flex-1 pt-24 pb-16">
         {/* Hero Section */}
         <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-12 pb-8">
           <div className="text-center max-w-3xl mx-auto space-y-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-[10px] font-bold uppercase tracking-wider">
-              <ShieldCheck className="h-4 w-4 text-emerald-600" />
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-900 text-[10px] font-bold uppercase tracking-wider">
+              <ShieldCheck className="h-4 w-4 text-blue-600" />
               <span>Program Desa Anti Korupsi</span>
             </div>
-            
+
             <h1 className="text-3xl font-extrabold sm:text-4xl text-slate-900 uppercase tracking-tight">
-              Desa <span className="bg-gradient-to-r from-emerald-600 to-teal-500 bg-clip-text text-transparent">Anti Korupsi</span>
+              Desa <span className="bg-gradient-to-r from-blue-700 to-blue-500 bg-clip-text text-transparent">Anti Korupsi</span>
             </h1>
-            
+
             <p className="text-sm leading-relaxed text-slate-500">
-              Wujud nyata transparansi, akuntabilitas, dan integritas Pemerintah Desa Pangawaren. Kami berkomitmen menyediakan akses terbuka bagi seluruh warga terhadap dokumen perencanaan, pengawasan, pelayanan publik, partisipasi masyarakat, dan kearifan lokal.
+              Wujud nyata transparansi, akuntabilitas, dan integritas Pemerintah Desa Gandrungmangu. Kami berkomitmen menyediakan akses terbuka bagi seluruh warga terhadap dokumen perencanaan, pengawasan, pelayanan publik, partisipasi masyarakat, dan kearifan lokal.
             </p>
           </div>
         </section>
@@ -117,11 +117,10 @@ export default function DesaAntiKorupsi() {
                 <button
                   key={pilar.id}
                   onClick={() => setActiveTab(pilar.id)}
-                  className={`col-span-1 py-3 px-3 rounded-xl text-center text-[10px] sm:text-xs font-black uppercase tracking-wider transition-all duration-300 ${
-                    isActive
-                      ? 'bg-emerald-600 text-white shadow-md shadow-emerald-600/10'
-                      : 'text-slate-600 hover:text-emerald-700 hover:bg-slate-50'
-                  }`}
+                  className={`col-span-1 py-3 px-3 rounded-xl text-center text-[10px] sm:text-xs font-black uppercase tracking-wider transition-all duration-300 ${isActive
+                      ? 'bg-blue-900 text-white shadow-md shadow-blue-900/10'
+                      : 'text-slate-600 hover:text-blue-700 hover:bg-slate-50'
+                    }`}
                 >
                   <span className="block text-[8px] opacity-60 mb-0.5">PILAR {pilar.id}</span>
                   <span className="line-clamp-1">{pilar.title}</span>
@@ -133,7 +132,7 @@ export default function DesaAntiKorupsi() {
           {/* Active Pilar Detail */}
           {activePilar && (
             <div className="space-y-6 animate-fadeIn">
-              <div className="border-l-4 border-emerald-600 pl-4 py-1">
+              <div className="border-l-4 border-blue-900 pl-4 py-1">
                 <h2 className="text-lg font-bold text-slate-800 uppercase tracking-wider">
                   Pilar {activePilar.id}: {activePilar.title}
                 </h2>
@@ -163,15 +162,15 @@ export default function DesaAntiKorupsi() {
                     >
                       <AccordionTrigger className="hover:no-underline py-4 text-left">
                         <div className="flex items-start gap-3">
-                          <span className="font-mono text-emerald-600 font-bold bg-emerald-50 px-2 py-0.5 rounded text-xs shrink-0 mt-0.5">
+                          <span className="font-mono text-blue-700 font-bold bg-blue-50 px-2 py-0.5 rounded text-xs shrink-0 mt-0.5">
                             {subMenu.id}
                           </span>
-                          <span className="text-xs md:text-sm font-bold text-slate-700 leading-relaxed hover:text-emerald-700">
+                          <span className="text-xs md:text-sm font-bold text-slate-700 leading-relaxed hover:text-blue-700">
                             {subMenu.title}
                           </span>
                         </div>
                       </AccordionTrigger>
-                      
+
                       <AccordionContent className="pb-6 pt-2 border-t border-slate-100">
                         <div className="space-y-3 mt-4">
                           {subMenu.items.map((item) => {
@@ -180,7 +179,7 @@ export default function DesaAntiKorupsi() {
                             const imageList = files?.images || (files?.imageUrl ? [{ url: files.imageUrl, name: files.imageName || 'Foto Dukung' }] : []);
                             const hasPdf = pdfList.length > 0;
                             const hasImage = imageList.length > 0;
-                            
+
                             return (
                               <div
                                 key={item.id}
@@ -277,7 +276,7 @@ export default function DesaAntiKorupsi() {
         <DialogContent className="max-w-2xl bg-white/95 backdrop-blur-md rounded-2xl border border-slate-200 p-6 shadow-2xl">
           <DialogHeader>
             <DialogTitle className="text-slate-800 text-sm font-bold flex items-center gap-2">
-              <ShieldCheck className="h-5 w-5 text-emerald-600" />
+              <ShieldCheck className="h-5 w-5 text-blue-600" />
               <span>Dokumentasi: {activeItemTitle}</span>
             </DialogTitle>
           </DialogHeader>
@@ -327,9 +326,8 @@ export default function DesaAntiKorupsi() {
                       <button
                         key={idx}
                         onClick={() => setActiveImageIndex(idx)}
-                        className={`relative h-10 w-14 overflow-hidden rounded-lg border-2 transition-all shrink-0 ${
-                          isActive ? 'border-emerald-600 ring-2 ring-emerald-500/20 scale-105' : 'border-slate-200 hover:border-slate-400'
-                        }`}
+                        className={`relative h-10 w-14 overflow-hidden rounded-lg border-2 transition-all shrink-0 ${isActive ? 'border-blue-600 ring-2 ring-blue-500/20 scale-105' : 'border-slate-200 hover:border-slate-400'
+                          }`}
                       >
                         <img
                           src={thumbUrl}

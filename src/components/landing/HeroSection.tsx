@@ -14,7 +14,7 @@ const floatingItems = [
   { icon: Users, label: 'Statistik Desa', href: '/statistik' },
   { icon: Newspaper, label: 'Berita Desa', href: '/BeritaDesa' },
   { icon: Building2, label: 'Pengumuman', href: '/pengumuman' },
-  { icon: Sparkles, label: 'Layanan Online', href: '/pelayanan-desa' },
+  { icon: Sparkles, label: 'Layanan Online', href: '/berita_desa' },
 ];
 
 const containerVariants = {
@@ -51,41 +51,41 @@ export function HeroSection() {
       <div className="absolute inset-0">
         <Image
           src={heroImageUrl}
-          alt="Pemandangan desa Pangawaren"
+          alt="Pemandangan desa Gandrungmangu"
           fill
           priority
           sizes="100vw"
           className="object-cover"
         />
       </div>
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.22),transparent_40%),linear-gradient(100deg,rgba(2,6,23,0.82)_0%,rgba(2,6,23,0.63)_45%,rgba(6,78,59,0.55)_100%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.22),transparent_40%),linear-gradient(100deg,rgba(2,6,23,0.82)_0%,rgba(2,6,23,0.63)_45%,rgba(30,58,138,0.55)_100%)]" />
       <div className="relative mx-auto flex min-h-[84vh] max-w-7xl items-center px-4 py-24 sm:px-6 lg:px-8 lg:py-28">
-        <div className="grid items-center gap-12 lg:grid-cols-[1.15fr_0.85fr]">
+        <div className="grid items-center lg:items-end gap-8 lg:gap-12 lg:grid-cols-[1.1fr_0.9fr]">
           <motion.div
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="max-w-3xl"
+            className="max-w-2xl"
           >
-            <motion.div variants={itemVariants} className="mb-6 inline-flex items-center gap-2 rounded-full border border-emerald-300/30 bg-white/12 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.35em] text-emerald-100 backdrop-blur-sm">
+            <motion.div variants={itemVariants} className="mb-6 inline-flex items-center gap-2 rounded-full border border-blue-300/30 bg-white/12 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.35em] text-blue-100 backdrop-blur-sm">
               <Sparkles className="h-4 w-4" />
               Selamat Datang di Portal Desa Digital
             </motion.div>
             <motion.h2 variants={itemVariants} className="text-4xl font-bold uppercase tracking-[0.08em] text-amber-300 sm:text-5xl lg:text-7xl">
-              DESA PANGAWAREN
+              DESA GANDRUNGMANGU
             </motion.h2>
-            <motion.p variants={itemVariants} className="mt-2 text-sm font-semibold uppercase tracking-[0.35em] text-emerald-100 sm:text-base">
-              KECAMATAN KARANGPUCUNG
+            <motion.p variants={itemVariants} className="mt-2 text-sm font-semibold uppercase tracking-[0.35em] text-blue-100 sm:text-base">
+              KECAMATAN GANDRUNGMANGU
             </motion.p>
             <motion.h1 variants={itemVariants} className="mt-6 text-3xl font-semibold leading-tight text-white sm:text-4xl lg:text-5xl lg:leading-[1.05]">
               Melayani masyarakat dengan cepat, mudah, dan transparan.
             </motion.h1>
             <motion.p variants={itemVariants} className="mt-6 max-w-2xl text-base leading-8 text-slate-200 sm:text-lg">
-              Portal resmi Pemerintah Desa Pangawaren yang menghubungkan masyarakat dengan layanan administrasi, informasi desa, statistik, berita, pengumuman, dan layanan digital dalam satu platform yang modern.
+              Portal resmi Pemerintah Desa Gandrungmangu yang menghubungkan masyarakat dengan layanan administrasi, informasi desa, statistik, berita, pengumuman, dan layanan digital dalam satu platform yang modern.
             </motion.p>
             <motion.div variants={itemVariants} className="mt-6 inline-flex items-center gap-2.5 rounded-2xl border border-amber-500/20 bg-amber-500/10 px-4 py-2.5 text-sm font-medium text-amber-300 backdrop-blur-sm">
               <span className="inline-flex h-2 w-2 rounded-full bg-amber-400 animate-pulse" />
-              <span>Seluruh pelayanan administrasi di Desa Pangawaren adalah <strong className="font-semibold text-amber-200">GRATIS</strong>.</span>
+              <span>Seluruh pelayanan administrasi di Desa Gandrungmangu adalah <strong className="font-semibold text-amber-200">GRATIS</strong>.</span>
             </motion.div>
             <motion.div variants={itemVariants} className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Link href="/layanan-surat" aria-label="Ajukan layanan desa">
@@ -101,7 +101,7 @@ export function HeroSection() {
               </Link>
             </motion.div>
             <motion.div variants={itemVariants} className="mt-10 flex items-center gap-3 text-sm font-medium text-slate-300">
-              <span className="inline-flex h-2.5 w-2.5 rounded-full bg-emerald-400" />
+              <span className="inline-flex h-2.5 w-2.5 rounded-full bg-blue-400" />
               Akses cepat, aman, dan responsif untuk semua kebutuhan administrasi masyarakat.
             </motion.div>
           </motion.div>
@@ -110,36 +110,43 @@ export function HeroSection() {
             initial={{ opacity: 0, x: 24 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="mx-auto w-full max-w-xl"
+            className="w-full max-w-md xl:max-w-lg mx-auto lg:ml-auto lg:mr-0 lg:translate-y-8 lg:translate-x-4"
           >
-            <div className="rounded-[2rem] border border-white/15 bg-white/12 p-5 shadow-[0_20px_80px_rgba(2,6,23,0.35)] backdrop-blur-xl">
-              <div className="rounded-[1.5rem] border border-white/10 bg-slate-950/40 p-6 sm:p-8">
-                <div className="flex items-center gap-3">
-                  <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-emerald-500/20 text-emerald-300">
-                    <CheckCircle2 className="h-5 w-5" />
+            {/* Outer card shell with compact glassmorphic theme */}
+            <div className="rounded-[2rem] border border-white/15 bg-white/10 p-3 sm:p-3.5 shadow-[0_20px_60px_rgba(2,6,23,0.45)] backdrop-blur-xl">
+              <div className="rounded-[1.5rem] border border-white/10 bg-slate-950/65 p-5 sm:p-6">
+                {/* Header Section */}
+                <div className="flex items-center gap-3.5">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-blue-400/30 bg-blue-500/20 text-blue-400 shadow-inner">
+                    <CheckCircle2 className="h-5 w-5 stroke-[2.25]" />
                   </div>
                   <div>
-                    <p className="text-sm font-semibold uppercase tracking-[0.25em] text-slate-400">Fokus Layanan</p>
-                    <p className="text-lg font-semibold text-white">Portal pelayanan masyarakat</p>
+                    <p className="text-[10px] font-bold uppercase tracking-[0.28em] text-slate-400">
+                      FOKUS LAYANAN
+                    </p>
+                    <h3 className="mt-0.5 text-lg font-bold tracking-tight text-white sm:text-xl">
+                      Portal pelayanan masyarakat
+                    </h3>
                   </div>
                 </div>
 
-                <div className="mt-8 grid gap-3 sm:grid-cols-2">
+                {/* Compact 2-Column Grid */}
+                <div className="mt-5 grid grid-cols-2 gap-2.5 sm:gap-3">
                   {floatingItems.map((item, index) => {
                     const Icon = item.icon;
                     return (
-                      <Link key={item.label} href={item.href} className="block">
+                      <Link key={item.label} href={item.href} className="block group h-full">
                         <motion.div
                           initial={{ opacity: 0, y: 10 }}
                           animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: 0.3 + index * 0.04, duration: 0.35 }}
-                          whileHover={{ scale: 1.03, y: -3, backgroundColor: 'rgba(255,255,255,0.14)', borderColor: 'rgba(255,255,255,0.2)' }}
-                          className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/10 p-3 text-sm text-slate-200 cursor-pointer transition-colors duration-200 h-full"
+                          transition={{ delay: 0.25 + index * 0.04, duration: 0.35 }}
+                          whileHover={{ scale: 1.02, y: -2 }}
+                          className="flex h-full min-h-[3.5rem] items-center gap-3 rounded-xl sm:rounded-2xl border border-white/10 bg-white/10 px-3.5 py-2.5 sm:py-3 text-white cursor-pointer transition-all duration-200 group-hover:border-white/25 group-hover:bg-white/15 shadow-sm"
                         >
-                          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/12 text-emerald-300">
-                            <Icon className="h-4 w-4" />
-                          </div>
-                          <span className="font-medium">{item.label}</span>
+                          <Icon className="h-4.5 w-4.5 shrink-0 text-blue-400 stroke-[2.25] transition-transform duration-200 group-hover:scale-110 group-hover:text-blue-300" />
+                          <span className="text-xs sm:text-[13px] font-semibold leading-tight text-white min-w-0 break-normal">
+                            {item.label}
+                          </span>
                         </motion.div>
                       </Link>
                     );
@@ -160,10 +167,10 @@ export function HeroSection() {
 
       {/* Smooth Curved Wave Divider */}
       <div className="absolute bottom-0 left-0 right-0 h-16 w-full pointer-events-none overflow-hidden z-10">
-        <svg 
-          className="absolute bottom-0 w-full h-16 text-slate-50 fill-current" 
-          viewBox="0 0 1440 100" 
-          preserveAspectRatio="none" 
+        <svg
+          className="absolute bottom-0 w-full h-16 text-slate-50 fill-current"
+          viewBox="0 0 1440 100"
+          preserveAspectRatio="none"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path d="M0,50 C480,100 960,100 1440,50 L1440,100 L0,100 Z" />

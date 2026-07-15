@@ -7,7 +7,7 @@ import { useDoc, useFirestore, useMemoFirebase } from '@/firebase';
 import { doc } from 'firebase/firestore';
 import { Skeleton } from '@/components/ui/skeleton';
 
-const COLORS = ['#16a34a', '#0ea5a4', '#f59e0b', '#7c3aed', '#ef4444'];
+const COLORS = ['#1e3a8a', '#2563eb', '#f59e0b', '#7c3aed', '#ef4444'];
 
 interface StatisticsChartsProps {
   statsDoc?: any;
@@ -70,7 +70,7 @@ export function StatisticsCharts({ statsDoc, isLoading }: StatisticsChartsProps)
 
   if (!statsDoc) {
     return (
-      <div className="mt-8 p-8 text-center bg-white rounded-[1.5rem] border border-emerald-600/20 shadow-sm max-w-lg mx-auto">
+      <div className="mt-8 p-8 text-center bg-white rounded-[1.5rem] border border-blue-900/20 shadow-sm max-w-lg mx-auto">
         <p className="text-sm font-semibold text-slate-700">Data Statistik Belum Siap</p>
         <p className="text-xs text-slate-500 mt-2">
           Administrator belum membuat rangkuman data kependudukan. Selesaikan langkah ini dengan mengklik tombol &quot;Update Statistik Grafik&quot; di menu Data Penduduk Admin.
@@ -86,7 +86,7 @@ export function StatisticsCharts({ statsDoc, isLoading }: StatisticsChartsProps)
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.15 }}
         transition={{ duration: 0.45 }}
-        className="rounded-[1.5rem] border border-emerald-600/20 bg-white p-6 shadow-sm lg:col-span-1"
+        className="rounded-[1.5rem] border border-blue-900/20 bg-white p-6 shadow-sm lg:col-span-1"
       >
         <h4 className="text-sm font-semibold text-slate-700">Kilas Data Wilayah</h4>
         <div className="mt-4 space-y-3">
@@ -110,7 +110,7 @@ export function StatisticsCharts({ statsDoc, isLoading }: StatisticsChartsProps)
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.15 }}
         transition={{ duration: 0.45, delay: 0.08 }}
-        className="rounded-[1.5rem] border border-emerald-600/20 bg-white p-6 shadow-sm lg:col-span-1"
+        className="rounded-[1.5rem] border border-blue-900/20 bg-white p-6 shadow-sm lg:col-span-1"
       >
         <h4 className="text-sm font-semibold text-slate-700">Komposisi Jenis Kelamin</h4>
         <div style={{ width: '100%', height: 240 }} className="mt-4">
@@ -145,7 +145,7 @@ export function StatisticsCharts({ statsDoc, isLoading }: StatisticsChartsProps)
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.15 }}
         transition={{ duration: 0.45, delay: 0.16 }}
-        className="rounded-[1.5rem] border border-emerald-600/20 bg-white p-6 shadow-sm lg:col-span-1"
+        className="rounded-[1.5rem] border border-blue-900/20 bg-white p-6 shadow-sm lg:col-span-1"
       >
         <h4 className="text-sm font-semibold text-slate-700">Sebaran Penduduk per RT</h4>
         <div style={{ width: '100%', height: 240 }} className="mt-3">
@@ -155,7 +155,7 @@ export function StatisticsCharts({ statsDoc, isLoading }: StatisticsChartsProps)
               <XAxis dataKey="rt" tick={{ fontSize: 11 }} />
               <YAxis />
               <Tooltip formatter={(value: number) => value.toLocaleString('id-ID')} />
-              <Bar dataKey="count" fill="#16a34a" />
+              <Bar dataKey="count" fill="#1e3a8a" />
             </BarChart>
           </ResponsiveContainer>
         </div>

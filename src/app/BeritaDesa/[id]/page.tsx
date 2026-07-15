@@ -46,13 +46,13 @@ export default function PublicBeritaDetailPage() {
 
       <main className="flex-1">
         <article className="container mx-auto px-4 max-w-4xl py-12 md:py-20">
-          
+
           {/* HEADER BERITA */}
           <div className="text-center space-y-6 mb-12">
             <h1 className="text-3xl md:text-5xl font-semibold text-primary leading-tight tracking-tight uppercase font-display">
               {news.title}
             </h1>
-            
+
             <div className="flex flex-col items-center gap-2">
               <div className="flex items-center gap-2 text-sm font-bold uppercase tracking-wider">
                 <span className="text-slate-900">{news.author}</span>
@@ -63,7 +63,7 @@ export default function PublicBeritaDetailPage() {
                 {news.date}
               </p>
             </div>
-            
+
             {news.subtitle && (
               <p className="text-xl text-slate-500 italic border-y border-slate-200 py-6 max-w-2xl mx-auto font-display">
                 "{news.subtitle}"
@@ -88,7 +88,7 @@ export default function PublicBeritaDetailPage() {
                 ) : (
                   <div className="flex h-full min-h-[360px] items-center justify-center bg-slate-900 text-white">
                     <div className="text-center">
-                      <Play className="mx-auto h-10 w-10 text-emerald-400" />
+                      <Play className="mx-auto h-10 w-10 text-blue-400" />
                       <p className="mt-4 text-base font-semibold">Tautan video belum valid atau tidak dikenali.</p>
                     </div>
                   </div>
@@ -96,7 +96,7 @@ export default function PublicBeritaDetailPage() {
               </div>
               {videoPlatform && (
                 <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-100 px-4 py-2 text-sm font-semibold text-slate-700">
-                  <span className="inline-flex h-2.5 w-2.5 rounded-full bg-emerald-600" />
+                  <span className="inline-flex h-2.5 w-2.5 rounded-full bg-blue-600" />
                   Platform: {videoPlatform === 'youtube' ? 'YouTube' : videoPlatform === 'tiktok' ? 'TikTok' : videoPlatform === 'instagram' ? 'Instagram' : 'Video'}
                 </div>
               )}
@@ -104,14 +104,14 @@ export default function PublicBeritaDetailPage() {
           ) : (
             <figure className="mb-12 space-y-3">
               <div className="rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-white">
-                <img 
-                  src={news.imageUrl} 
-                  alt={news.title} 
+                <img
+                  src={news.imageUrl}
+                  alt={news.title}
                   className="w-full h-auto object-cover max-h-[600px]"
                 />
               </div>
               <figcaption className="text-center text-[10px] text-slate-400 font-black uppercase tracking-[0.2em] px-4">
-                Kegiatan Pemerintah Desa Pangawaren.
+                Kegiatan Pemerintah Desa Gandrungmangu.
               </figcaption>
             </figure>
           )}
@@ -127,7 +127,7 @@ export default function PublicBeritaDetailPage() {
                       className="text-lg leading-8 text-justify whitespace-pre-wrap font-sans"
                     >
                       {index === 0 && (
-                        <span className="font-black text-primary uppercase mr-2">Pangawaren —</span>
+                        <span className="font-black text-primary uppercase mr-2">Gandrungmangu —</span>
                       )}
                       {paragraph.trim()}
                     </p>
@@ -143,7 +143,7 @@ export default function PublicBeritaDetailPage() {
               Bagikan
             </Button>
             <p className="text-[10px] font-black text-slate-300 uppercase tracking-widest">
-              Redaksi Pangawaren Digital
+              Redaksi Gandrungmangu Digital
             </p>
           </footer>
 
@@ -155,7 +155,7 @@ export default function PublicBeritaDetailPage() {
         <div className="container mx-auto px-4 text-center">
           <Logo />
           <p className="mt-8 text-[10px] font-bold uppercase tracking-widest">
-            © 2026 Pemerintah Desa Pangawaren • Website Resmi Pemerintahan Desa
+            © 2026 Pemerintah Desa Gandrungmangu • Website Resmi Pemerintahan Desa
           </p>
         </div>
       </footer>
