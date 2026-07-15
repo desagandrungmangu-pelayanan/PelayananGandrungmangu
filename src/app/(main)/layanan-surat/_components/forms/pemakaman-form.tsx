@@ -154,7 +154,7 @@ export function PemakamanForm({ isAdmin = false }: { isAdmin?: boolean }) {
             form.setValue('job', resident.occupation);
             form.setValue('maritalStatus', resident.maritalStatus);
 
-            const fullAddress = `${resident.address}, RT ${resident.rt} RW ${resident.rw}, ${resident.kelurahan}Kec. Gandrungmangu, Kab. Cilacap`.toUpperCase();
+            const fullAddress = `${resident.address}, RT ${resident.rt} RW ${resident.rw}, ${resident.kelurahan}, Kec. Gandrungmangu, Kab. Cilacap`.toUpperCase();
             form.setValue('address', fullAddress);
 
             toast({ title: "Data Almarhum Ditemukan", description: "Data identitas telah diisi otomatis." });

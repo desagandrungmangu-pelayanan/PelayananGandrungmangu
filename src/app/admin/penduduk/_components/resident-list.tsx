@@ -402,7 +402,7 @@ export function ResidentList() {
                     <TableCell className="text-[10px] font-semibold">{resident.relationshipToHeadOfFamily || '-'}</TableCell>
                     <TableCell className="text-[10px] min-w-[300px]">
                       <p className="leading-tight truncate">
-                        {`${resident.address}, RT ${resident.rt} RW ${resident.rw}, ${resident.kelurahan}Kec. Gandrungmangu, Kab. Cilacap`}
+                        {`${resident.address}, RT ${resident.rt} RW ${resident.rw}, ${resident.kelurahan}, Kec. Gandrungmangu, Kab. Cilacap`}
                       </p>
                     </TableCell>
                     <TableCell className="text-right">
