@@ -147,7 +147,7 @@ export function DomisiliForm({ isAdmin = false }: { isAdmin?: boolean }) {
       nationality: 'WNI',
       religion: '',
       originAddress: '',
-      domicileAddress: 'Desa GandrungmanguKec. Gandrungmangu, Kab. Cilacap',
+      domicileAddress: 'Desa Gandrungmangu, Kec. Gandrungmangu, Kab. Cilacap',
     },
   });
 
