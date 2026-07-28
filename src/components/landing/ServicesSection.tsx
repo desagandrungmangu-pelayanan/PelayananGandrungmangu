@@ -1,0 +1,100 @@
+'use client';
+
+import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { ArrowRight, BarChart3, BookOpenText, FileText, Landmark, Megaphone, Newspaper, Users2, Info } from 'lucide-react';
+
+const services = [
+  { href: '/pelayanan-desa', title: 'Pelayanan Desa', description: 'Akses layanan administrasi dan dokumen resmi dengan langkah yang sederhana.', icon: FileText },
+  { href: '/profil-desa', title: 'Profil Desa', description: 'Kenali sejarah, struktur, dan identitas pemerintahan desa secara lengkap.', icon: Landmark },
+  { href: '/statistik', title: 'Statistik', description: 'Lihat data kependudukan dan informasi desa secara realtime dan transparan.', icon: BarChart3 },
+  { href: '/BeritaDesa', title: 'Berita Desa', description: 'Ikuti informasi dan kegiatan terbaru dari Pemerintah Desa Gandrungmangu.', icon: Newspaper },
+  { href: '/layanan-surat', title: 'Layanan', description: 'Ajukan berbagai surat keterangan dan kebutuhan administrasi secara online.', icon: Users2 },
+  { href: '/pengumuman', title: 'Pengumuman', description: 'Temukan pengumuman penting serta agenda desa yang harus diketahui.', icon: Megaphone },
+];
+
+export function ServicesSection() {
+  return (
+    <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-20 lg:px-8 lg:py-28">
+      <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.45 }}
+          className="max-w-2xl"
+        >
+          <p className="text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] sm:tracking-[0.3em] text-blue-700">Layanan Utama</p>
+          <h2 className="mt-2 sm:mt-3 text-2xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
+            Layanan digital desa yang mudah dipahami dan diakses.
+          </h2>
+          <p className="mt-3 sm:mt-4 text-base sm:text-lg leading-relaxed sm:leading-8 text-slate-600">
+            Seluruh pelayanan desa dapat dijangkau secara cepat melalui portal digital yang dirancang untuk masyarakat.
+          </p>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.45, delay: 0.1 }}
+          className="w-full lg:max-w-md shrink-0"
+        >
+          <div className="p-4 sm:p-5 bg-amber-50 border border-dashed border-amber-300 rounded-2xl sm:rounded-[2rem] flex items-center gap-3.5 sm:gap-4 shadow-[0_15px_35px_rgba(245,158,11,0.03)]">
+            <div className="p-2.5 sm:p-3 bg-white rounded-xl sm:rounded-2xl shadow-sm text-amber-600 shrink-0">
+              <Info className="h-5 w-5 sm:h-6 sm:w-6" />
+            </div>
+            <div className="space-y-0.5">
+              <h3 className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-amber-900">Transparansi Biaya</h3>
+              <p className="text-xs leading-relaxed font-semibold text-amber-800">
+                Seluruh pelayanan administrasi di Desa Gandrungmangu adalah <strong className="text-amber-950 font-bold">GRATIS</strong> (Rp. 0,-) tanpa biaya apapun.
+              </p>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+
+
+      <div className="mt-8 sm:mt-12 grid gap-4 sm:gap-6 md:grid-cols-2 xl:grid-cols-3">
+        {services.map((service, index) => {
+          const Icon = service.icon;
+          return (
+            <motion.article
+              key={service.title}
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.35, delay: index * 0.04 }}
+              whileHover={{ y: -6, scale: 1.01 }}
+              className="group relative overflow-hidden rounded-2xl sm:rounded-[1.75rem] border border-blue-900/15 bg-white/90 backdrop-blur-sm p-5 sm:p-7 shadow-[0_20px_45px_rgba(15,23,42,0.03)] transition-all duration-300 hover:border-blue-700/35 hover:shadow-[0_30px_60px_rgba(30,58,138,0.06)]"
+            >
+              {/* Glowing Corner Accent */}
+              <div className="absolute -right-12 -top-12 h-28 w-28 rounded-full bg-blue-600/5 blur-xl transition-all duration-500 group-hover:bg-blue-600/10 group-hover:scale-125" />
+
+              {/* Subtle Dot Grid pattern */}
+              <div className="absolute right-5 top-5 text-slate-200 transition-colors duration-300 group-hover:text-blue-200/50 pointer-events-none">
+                <svg width="40" height="40" fill="none" viewBox="0 0 40 40">
+                  <pattern id={`card-dots-${index}`} x="0" y="0" width="8" height="8" patternUnits="userSpaceOnUse">
+                    <circle cx="2" cy="2" r="1" fill="currentColor" />
+                  </pattern>
+                  <rect width="40" height="40" fill={`url(#card-dots-${index})`} />
+                </svg>
+              </div>
+
+              <Link href={service.href} className="relative z-10 flex h-full flex-col">
+                <div className="flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-xl sm:rounded-2xl bg-blue-50 text-blue-700 transition-all duration-300 group-hover:bg-blue-900 group-hover:text-white group-hover:rotate-6">
+                  <Icon className="h-5 w-5 sm:h-6 sm:w-6" />
+                </div>
+                <h3 className="mt-4 sm:mt-6 text-lg sm:text-xl font-semibold text-slate-900 transition-colors group-hover:text-blue-900">{service.title}</h3>
+                <p className="mt-2 sm:mt-3 flex-1 text-xs sm:text-sm leading-relaxed sm:leading-7 text-slate-600">{service.description}</p>
+                <span className="mt-4 sm:mt-6 inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-blue-700">
+                  Buka halaman
+                  <ArrowRight className="h-3.5 w-3.5 sm:h-4 sm:w-4 transition-transform group-hover:translate-x-1.5" />
+                </span>
+              </Link>
+            </motion.article>
+          );
+        })}
+      </div>
+    </section>
+  );
+}

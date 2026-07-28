@@ -1,0 +1,86 @@
+'use client';
+
+import { motion } from 'framer-motion';
+import { useMemoFirebase, useCollection, useDoc, useFirestore, useUser } from '@/firebase';
+import { collection, query, limit, where, doc } from 'firebase/firestore';
+import { ArrowUpRight, Home, Users, FileText, BarChart3, BadgeCheck, MapPin } from 'lucide-react';
+import { Skeleton } from '@/components/ui/skeleton';
+import { StatisticsCharts } from './StatisticsCharts';
+
+const metrics = [
+  { label: 'Jumlah Penduduk', icon: Users, accent: 'text-blue-600', bg: 'bg-blue-50' },
+  { label: 'Jumlah KK', icon: Home, accent: 'text-amber-600', bg: 'bg-amber-50' },
+  { label: 'RT', icon: BadgeCheck, accent: 'text-cyan-600', bg: 'bg-cyan-50' },
+  { label: 'RW', icon: BarChart3, accent: 'text-violet-600', bg: 'bg-violet-50' },
+  { label: 'Dusun', icon: MapPin, accent: 'text-rose-600', bg: 'bg-rose-50' },
+  { label: 'Pelayanan Diajukan', icon: FileText, accent: 'text-slate-700', bg: 'bg-slate-100' },
+];
+
+export function StatisticsSection() {
+  const firestore = useFirestore();
+
+  const statsRef = useMemoFirebase(() => {
+    if (!firestore) return null;
+    return doc(firestore, 'villageProfile', 'statistics');
+  }, [firestore]);
+
+  const { data: statsDoc, isLoading: statsLoading, error: statsError } = useDoc<any>(statsRef);
+
+  const { user } = useUser();
+
+  // Only request the current user's letter requests when signed in to satisfy Firestore rules.
+  const submissionsQuery = useMemoFirebase(() => {
+    if (!firestore || !user || user.isAnonymous) return null;
+    return query(
+      collection(firestore, 'letterRequests'),
+      where('requestorAuthUid', '==', user.uid),
+      limit(5000)
+    );
+  }, [firestore, user]);
+
+  const { data: submissions, isLoading: submissionsLoading, error: submissionsError } = useCollection(submissionsQuery);
+
+  const values = {
+    residents: statsDoc?.total ?? 0,
+    households: statsDoc?.totalKK ?? 0,
+    rt: 18,
+    rw: 6,
+    dusun: 4,
+    requests: submissions?.length ?? 0,
+  };
+
+  const hasError = Boolean(statsError || submissionsError);
+
+  return (
+    <section className="py-12 sm:py-20 lg:py-28">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.45 }}
+          className="flex flex-col gap-3 sm:gap-4 lg:flex-row lg:items-end lg:justify-between"
+        >
+          <div className="max-w-2xl">
+            <p className="text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] sm:tracking-[0.3em] text-blue-700">Statistik Desa</p>
+            <h2 className="mt-2 sm:mt-3 text-2xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
+              Data terbaru mengenai kondisi Desa Gandrungmangu.
+            </h2>
+            <p className="mt-2 sm:mt-4 text-base sm:text-lg leading-relaxed sm:leading-8 text-slate-600">
+              Informasi terbuka yang membantu masyarakat memahami kondisi wilayah dan perkembangan pelayanan desa.
+            </p>
+          </div>
+          <a href="/statistik" className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-blue-700">
+            Lihat dashboard lengkap
+            <ArrowUpRight className="h-4 w-4" />
+          </a>
+        </motion.div>
+
+
+        <div className="mt-8 sm:mt-12">
+          <StatisticsCharts statsDoc={statsDoc} isLoading={statsLoading} />
+        </div>
+      </div>
+    </section>
+  );
+}

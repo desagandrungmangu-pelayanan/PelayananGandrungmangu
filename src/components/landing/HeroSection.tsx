@@ -1,0 +1,181 @@
+'use client';
+
+import Link from 'next/link';
+import Image from 'next/image';
+import { motion } from 'framer-motion';
+import { useMemoFirebase, useDoc, useFirestore } from '@/firebase';
+import { doc } from 'firebase/firestore';
+import { ArrowRight, BarChart3, Building2, CheckCircle2, ChevronDown, FileText, Newspaper, Sparkles, Users } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+
+const floatingItems = [
+  { icon: FileText, label: 'Ajukan Surat', href: '/layanan-surat' },
+  { icon: BarChart3, label: 'Cek Status Permohonan', href: '/layanan-surat' },
+  { icon: Users, label: 'Statistik Desa', href: '/statistik' },
+  { icon: Newspaper, label: 'Berita Desa', href: '/BeritaDesa' },
+  { icon: Building2, label: 'Pengumuman', href: '/pengumuman' },
+  { icon: Sparkles, label: 'Layanan Online', href: '/pelayanan-desa' },
+];
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.08,
+    },
+  },
+} as const;
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 16 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: 'easeOut' },
+  },
+} as const;
+
+export function HeroSection() {
+  const firestore = useFirestore();
+  const heroRef = useMemoFirebase(() => {
+    if (!firestore) return null;
+    return doc(firestore, 'heroImage', 'default');
+  }, [firestore]);
+
+  const { data: heroData } = useDoc<{ imageUrl?: string }>(heroRef);
+  const heroImageUrl = heroData?.imageUrl || 'https://images.unsplash.com/photo-1602989106211-81de671c23a9?q=80&w=2000';
+
+  return (
+    <section className="relative isolate overflow-hidden bg-slate-950">
+      <div className="absolute inset-0">
+        <Image
+          src={heroImageUrl}
+          alt="Pemandangan desa Gandrungmangu"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
+      </div>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.22),transparent_40%),linear-gradient(100deg,rgba(2,6,23,0.82)_0%,rgba(2,6,23,0.63)_45%,rgba(30,58,138,0.55)_100%)]" />
+      <div className="relative mx-auto flex min-h-[80vh] sm:min-h-[84vh] max-w-7xl items-center px-4 pt-20 pb-16 sm:px-6 lg:px-8 sm:py-24 lg:py-28">
+        <div className="grid items-center lg:items-end gap-8 lg:gap-12 lg:grid-cols-[1.1fr_0.9fr]">
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="max-w-2xl"
+          >
+            <motion.div variants={itemVariants} className="mb-4 sm:mb-6 inline-flex items-center gap-2 rounded-full border border-blue-300/30 bg-white/12 px-3.5 py-1.5 sm:px-4 sm:py-2 text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider sm:tracking-[0.35em] text-blue-100 backdrop-blur-sm">
+              <Sparkles className="h-3.5 w-3.5 shrink-0 text-amber-300" />
+              <span>Selamat Datang di Portal Desa Digital</span>
+            </motion.div>
+            <motion.h2 variants={itemVariants} className="text-3xl font-bold uppercase tracking-tight text-amber-300 sm:text-5xl lg:text-7xl sm:tracking-[0.08em] leading-tight">
+              DESA GANDRUNGMANGU
+            </motion.h2>
+            <motion.p variants={itemVariants} className="mt-1.5 text-xs font-semibold uppercase tracking-widest text-blue-100 sm:text-base sm:tracking-[0.35em]">
+              KECAMATAN GANDRUNGMANGU
+            </motion.p>
+            <motion.h1 variants={itemVariants} className="mt-4 sm:mt-6 text-2xl font-semibold leading-snug text-white sm:text-4xl lg:text-5xl lg:leading-[1.05]">
+              Melayani masyarakat dengan cepat, mudah, dan transparan.
+            </motion.h1>
+            <motion.p variants={itemVariants} className="mt-4 sm:mt-6 max-w-2xl text-sm sm:text-lg leading-relaxed sm:leading-8 text-slate-200">
+              Portal resmi Pemerintah Desa Gandrungmangu yang menghubungkan masyarakat dengan layanan administrasi, informasi desa, statistik, berita, pengumuman, dan layanan digital dalam satu platform yang modern.
+            </motion.p>
+            <motion.div variants={itemVariants} className="mt-5 sm:mt-6 inline-flex items-center gap-2 rounded-xl sm:rounded-2xl border border-amber-500/20 bg-amber-500/10 px-3.5 py-2 sm:px-4 sm:py-2.5 text-xs sm:text-sm font-medium text-amber-300 backdrop-blur-sm">
+              <span className="inline-flex h-2 w-2 shrink-0 rounded-full bg-amber-400 animate-pulse" />
+              <span>Seluruh pelayanan administrasi di Desa Gandrungmangu adalah <strong className="font-semibold text-amber-200">GRATIS</strong>.</span>
+            </motion.div>
+            <motion.div variants={itemVariants} className="mt-6 sm:mt-8 flex flex-col gap-3 sm:flex-row">
+              <Link href="/layanan-surat" aria-label="Ajukan layanan desa" className="w-full sm:w-auto">
+                <Button className="h-11 sm:h-12 w-full sm:w-auto rounded-full bg-amber-400 px-7 text-sm sm:text-base font-semibold text-slate-950 shadow-[0_20px_45px_rgba(250,204,21,0.25)] transition-all duration-300 hover:-translate-y-1 hover:bg-amber-300">
+                  Ajukan Layanan
+                  <ArrowRight className="h-4 w-4" />
+                </Button>
+              </Link>
+              <Link href="/profil-desa" aria-label="Lihat profil desa" className="w-full sm:w-auto">
+                <Button variant="outline" className="h-11 sm:h-12 w-full sm:w-auto rounded-full border-white/25 bg-white/10 px-7 text-sm sm:text-base font-semibold text-white backdrop-blur-sm hover:bg-white/15">
+                  Profil Desa
+                </Button>
+              </Link>
+            </motion.div>
+            <motion.div variants={itemVariants} className="mt-8 sm:mt-10 flex items-center gap-2.5 text-xs sm:text-sm font-medium text-slate-300">
+              <span className="inline-flex h-2 w-2 shrink-0 rounded-full bg-blue-400" />
+              Akses cepat, aman, dan responsif untuk semua kebutuhan administrasi masyarakat.
+            </motion.div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 24 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="w-full max-w-md xl:max-w-lg mx-auto lg:ml-auto lg:mr-0 lg:translate-y-8 lg:translate-x-4"
+          >
+            {/* Outer card shell with compact glassmorphic theme */}
+            <div className="rounded-[1.75rem] sm:rounded-[2rem] border border-white/15 bg-white/10 p-2.5 sm:p-3.5 shadow-[0_20px_60px_rgba(2,6,23,0.45)] backdrop-blur-xl">
+              <div className="rounded-[1.25rem] sm:rounded-[1.5rem] border border-white/10 bg-slate-950/65 p-4 sm:p-6">
+                {/* Header Section */}
+                <div className="flex items-center gap-3">
+                  <div className="flex h-9 w-9 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-full border border-blue-400/30 bg-blue-500/20 text-blue-400 shadow-inner">
+                    <CheckCircle2 className="h-4.5 w-4.5 sm:h-5 sm:w-5 stroke-[2.25]" />
+                  </div>
+                  <div>
+                    <p className="text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.25em] text-slate-400">
+                      FOKUS LAYANAN
+                    </p>
+                    <h3 className="mt-0.5 text-base sm:text-xl font-bold tracking-tight text-white">
+                      Portal pelayanan masyarakat
+                    </h3>
+                  </div>
+                </div>
+
+                {/* Compact 2-Column Grid */}
+                <div className="mt-4 sm:mt-5 grid grid-cols-2 gap-2 sm:gap-3">
+                  {floatingItems.map((item, index) => {
+                    const Icon = item.icon;
+                    return (
+                      <Link key={item.label} href={item.href} className="block group h-full">
+                        <motion.div
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: 0.25 + index * 0.04, duration: 0.35 }}
+                          whileHover={{ scale: 1.02, y: -2 }}
+                          className="flex h-full min-h-[3.25rem] sm:min-h-[3.5rem] items-center gap-2.5 sm:gap-3 rounded-xl sm:rounded-2xl border border-white/10 bg-white/10 px-3 py-2 sm:px-3.5 sm:py-3 text-white cursor-pointer transition-all duration-200 group-hover:border-white/25 group-hover:bg-white/15 shadow-sm"
+                        >
+                          <Icon className="h-4 w-4 sm:h-4.5 sm:w-4.5 shrink-0 text-blue-400 stroke-[2.25] transition-transform duration-200 group-hover:scale-110 group-hover:text-blue-300" />
+                          <span className="text-[11px] sm:text-[13px] font-semibold leading-tight text-white min-w-0 break-normal">
+                            {item.label}
+                          </span>
+                        </motion.div>
+                      </Link>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 text-white/70 z-20">
+        <div className="flex flex-col items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.3em]">
+          <span>Scroll</span>
+          <ChevronDown className="h-4 w-4 animate-bounce" />
+        </div>
+      </div>
+
+      {/* Smooth Curved Wave Divider */}
+      <div className="absolute bottom-0 left-0 right-0 h-16 w-full pointer-events-none overflow-hidden z-10">
+        <svg
+          className="absolute bottom-0 w-full h-16 text-slate-50 fill-current"
+          viewBox="0 0 1440 100"
+          preserveAspectRatio="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M0,50 C480,100 960,100 1440,50 L1440,100 L0,100 Z" />
+        </svg>
+      </div>
+    </section>
+  );
+}
